@@ -20,25 +20,23 @@
     <div class="all_seckill_goods">
 
         <div>
-            <span th:if="${user == null}"> 您还没有登录，请登陆后再操作</span>
-            <span th:if="${user != null}"> <span th:text="'欢迎您 '+${user.userName}"></span></span>
-            <span>没有收货地址的提示。。。</span>
+            <span><span id="username"></span></span>
+            <span id="address">没有收货地址的提示。。。</span>
         </div>
 
-                <div class="seckill_goods" th:each="goods,goodsStat : ${goodsList}">
-            <h4 th:text="${goods.goodsName}"></h4>
+        <div class="seckill_goods" id="goodList">
+            <h4 id="goodname"></h4>
             <img th:src="@{${goods.goodsImg}}" width="250"/>
             <br/><br/>
             <div class="seckill_price">
-                <p th:text="${goods.goodsTitle}"></p>
+                <p id="goodtitle"></p>
                 <p>
-                    <span class="price1" th:text="${goods.seckillPrice}+'元  '"></span>
-                    <del><span class="price2" th:text="${goods.goodsPrice}+'元'"></span></del>
+                    <span class="price1" id="seckillprice"></span>
+                    <del><span class="price2" id="goodprice"></span></del>
                 </p>
                 <a th:href="'/goods_detail.html?goodsId='+${goods.id}">
-                    <button class="btn btn-default" type="submit">进入详情页...</button>
+                    <a class="btn btn-default" type="submit">进入详情页...</a>
                 </a>
-
             </div>
         </div>
     </div>
@@ -54,4 +52,16 @@
 <script type="text/javascript" src="/static/js/md5.min.js"></script>
 <!-- common.js -->
 <script type="text/javascript" src="/static/js/common.js"></script>
+<script src="/static/layuiadmin/layui/layui.js"></script>
+<script src="/static/layuiadmin/layui/layui.js"></script>
+<script src="/static/product/common/alljs/web.js"></script>
+<script type="text/javascript" src="/static/templates/goodlist.js"></script>
+<script>
+    layui.config({
+        base : basePath, //静态资源所在路径
+        version: new Date().getTime()
+    }).extend({
+        index : indexPath, //主入口模块
+    }).use(['index','baseUtil',"autotable"],goodlist);
+</script>
 </html>

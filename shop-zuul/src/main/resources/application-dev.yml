@@ -28,6 +28,9 @@ zuul:
     shop-system:
       path: /system/**
       service-id: shop-system
+    shop-seckill:
+      path: /seckill/**
+      service-id: shop-seckill
 
 ribbon:
   ReadTimeout: 60000

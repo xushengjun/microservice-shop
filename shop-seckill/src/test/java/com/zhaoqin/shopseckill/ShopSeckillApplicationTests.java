@@ -1,4 +1,4 @@
-package comzhaoqin.shopseckill;
+package com.zhaoqin.shopseckill;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

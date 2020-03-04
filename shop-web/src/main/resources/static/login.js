@@ -28,9 +28,9 @@ function submit(){
             async: false,
             url: "/system/user/id", //(必需)
             data: field, // 参数
-            // dataType: "json",
+            dataType: "json",
             success: function(result) {
-                location.href = "/static/index.html";
+                location.href = "/static/templates/goods_list.html";
             },
             error: function() {
                 location.href = "/static/templates/error/404.html";

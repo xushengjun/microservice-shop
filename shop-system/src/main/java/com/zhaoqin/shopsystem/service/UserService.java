@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface UserService {
-    boolean isExist(String username, String password);
+    User isExist(String username, String password);
 }

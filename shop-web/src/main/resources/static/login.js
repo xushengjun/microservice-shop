@@ -30,10 +30,10 @@ function submit(){
             data: field, // 参数
             // dataType: "json",
             success: function(result) {
-                debugger
+                location.href = "/static/index.html";
             },
             error: function() {
-                debugger
+                location.href = "/static/templates/error/404.html";
             }
         });
     });

@@ -58,6 +58,13 @@ public class ResultData<T> {
 		return resultData;
 	}
 
+	public static ResultData error(String msg){
+		ResultData resultData = new ResultData();
+		resultData.setSuccess(false);
+		resultData.setMsg(msg);
+		return resultData;
+	}
+
 	public static ResultData error(Object data, String msg){
 		ResultData resultData = new ResultData();
 		resultData.data = data;

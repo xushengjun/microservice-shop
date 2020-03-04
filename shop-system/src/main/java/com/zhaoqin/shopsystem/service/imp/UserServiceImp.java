@@ -17,8 +17,7 @@ public class UserServiceImp implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public boolean isExist(String username, String password) {
-        User user = userMapper.queryUser(username, password);
-        return false;
+    public User isExist(String username, String password) {
+        return userMapper.queryUser(username, password);
     }
 }

@@ -1,0 +1,51 @@
+* {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+BODY {
+	HEIGHT: 100%; BACKGROUND: #111
+}
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none
+}
+#supersized-loader {
+	HEIGHT: 60px; WIDTH: 60px; POSITION: absolute; LEFT: 50%; MARGIN: -30px 0px 0px -30px; Z-INDEX: 0; TOP: 50%; TEXT-INDENT: -999em
+}
+#supersized {
+	OVERFLOW: hidden; HEIGHT: 100%; WIDTH: 100%; POSITION: fixed; LEFT: 0px; Z-INDEX: -999; DISPLAY: block; TOP: 0px
+}
+#supersized IMG {
+	BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: auto; WIDTH: auto; BORDER-BOTTOM-STYLE: none; POSITION: relative; BORDER-RIGHT-STYLE: none; OUTLINE-STYLE: none; DISPLAY: none
+}
+.speed#supersized IMG {
+	-MS-INTERPOLATION-MODE: nearest-neighbor; image-rendering: -moz-crisp-edges
+}
+.quality#supersized IMG {
+	-MS-INTERPOLATION-MODE: bicubic; image-rendering: optimizeQuality
+}
+#supersized LI {
+	LIST-STYLE-TYPE: none; OVERFLOW: hidden; HEIGHT: 100%; WIDTH: 100%; BACKGROUND: #111; POSITION: fixed; LEFT: 0px; Z-INDEX: -30; DISPLAY: block; TOP: 0px
+}
+#supersized A {
+	HEIGHT: 100%; WIDTH: 100%; DISPLAY: block
+}
+#supersized LI.prevslide {
+	Z-INDEX: -20
+}
+#supersized LI.activeslide {
+	Z-INDEX: -10
+}
+#supersized LI.image-loading {
+	HEIGHT: 100%; WIDTH: 100%;
+}
+#supersized LI.image-loading IMG {
+	VISIBILITY: hidden
+}
+#supersized LI.prevslide IMG {
+	DISPLAY: inline
+}
+#supersized LI.activeslide IMG {
+	DISPLAY: inline
+}
+#supersized IMG {
+	MAX-WIDTH: none !important
+}

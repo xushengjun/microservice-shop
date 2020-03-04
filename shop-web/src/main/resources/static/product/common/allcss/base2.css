@@ -1,0 +1,69 @@
+.myfooter {
+	HEIGHT: 50px; WIDTH: 100%; POSITION: absolute; BOTTOM: 0px
+}
+.myfooter P {
+	FONT-SIZE: 14px; LINE-HEIGHT: 50px
+}
+.reset {
+	BACKGROUND: #5badea
+}
+.my_yzm {
+	POSITION: relative
+}
+.yzm {
+	WIDTH: 110px; RIGHT: 6px; POSITION: absolute; TOP: 25px
+}
+.myhead {
+	HEIGHT: 50px; WIDTH: 100%; POSITION: absolute; TOP: 0px
+}
+.myhead P {
+	FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 16px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px
+}
+.myhead A {
+	FONT-SIZE: 14px; TEXT-DECORATION: none; FLOAT: right; COLOR: #4fb5e4; PADDING-BOTTOM: 0px; PADDING-TOP: 18px; PADDING-LEFT: 0px; PADDING-RIGHT: 20px
+}
+.page-container H1 {
+	WIDTH: 305px; TEXT-ALIGN: center; MARGIN: 0px auto; DISPLAY: block
+}
+.page-container {
+	WIDTH: 305px; BACKGROUND: #ffffff; PADDING-BOTTOM: 30px; PADDING-TOP: 30px; PADDING-LEFT: 40px; PADDING-RIGHT: 40px; border-radius: 10px
+}
+.myselect {
+	MARGIN-TOP: 20px
+}
+.myselect SELECT {
+	FONT-SIZE: 14px; HEIGHT: 42px; WIDTH: 302px; COLOR: #333333; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; border-radius: 5px
+}
+.myselect SELECT OPTION {
+	OVERFLOW: hidden; HEIGHT: 42px; WIDTH: 302px; DISPLAY: block; LINE-HEIGHT: 42px
+}
+.myselect IMG {
+	WIDTH: 8px; RIGHT: 10px; POSITION: absolute; TOP: 20px
+}
+.page-container INPUT {
+	BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid; BACKGROUND: #ffffff; BORDER-BOTTOM: #cccccc 1px solid; COLOR: #333333; BORDER-LEFT: #cccccc 1px solid
+}
+INPUT:unknown {
+	COLOR: #333333
+}
+INPUT {
+	COLOR: #333333
+}
+INPUT:unknown {
+	COLOR: #333333
+}
+INPUT {
+	COLOR: #333333
+}
+INPUT:unknown {
+	COLOR: #333333
+}
+INPUT {
+	COLOR: #333333
+}
+.my_yzm A IMG {
+	RIGHT: 20px; POSITION: absolute; TOP: 32px
+}
+.my_yzm .code1 {
+	WIDTH: 160px; MARGIN-LEFT: -45px
+}

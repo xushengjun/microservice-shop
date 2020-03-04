@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxj.system.mapper.AutoCurdMapper">
+
+    <select resultType="map" id="queryByPage">
+        SELECT * FROM
+        <choose>
+            <when test="wst!=null and wst!=''">
+               (${@com.zxj.common.view.PseudoView@getWst(wst)})
+            </when>
+            <otherwise>
+                ${tableName}
+            </otherwise>
+        </choose>
+        ${ew.customSqlSegment}
+    </select>
+
+    <select resultType="map" id="queryByCondition">
+        SELECT * FROM ${tableName}
+        ${ew.customSqlSegment}
+    </select>
+
+
+    <insert id="save">
+        INSERT INTO ${tableName}
+        <foreach open="(" close=")" separator="," collection="data.entrySet()" index="key" item="val">
+            ${key}
+        </foreach>
+        VALUES
+        <foreach open="(" close=")" separator="," collection="data.entrySet()" index="key" item="val">
+            #{val,jdbcType=VARCHAR}
+        </foreach>
+    </insert>
+
+
+    <update id="update">
+        UPDATE ${tableName}
+        SET
+        <foreach  separator="," collection="data.entrySet()" index="key" item="val">
+            ${key} = #{val,jdbcType=VARCHAR}
+        </foreach>
+        WHERE ${zjzd} = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE ${tableName}
+        WHERE ${zjzd}
+        in
+        <foreach open="(" close=")" separator="," collection="ids" item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select resultType="map" id="queryByIds">
+        select * from ${tableName} where ${zjzd} in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

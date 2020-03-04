@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>layuiAdmin std - 通用后台管理模板系统（iframe标准版）</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+
+	<script>
+		/^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
+	</script>
+    <style>
+        .h{
+            background: #009688;
+        }
+        .h a{
+            color: #ffffff !important;
+        }
+        #navTopList .layui-nav-item{
+            margin: auto !important;
+        }
+        .layui-layout-admin .layui-header a{
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div id="LAY_app">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+			<!-- 头部区域 -->
+			<ul class="layui-nav layui-layout-left" id="navTopList">
+				<li class="layui-nav-item layadmin-flexible" lay-unselect>
+					<a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+						<i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+					</a>
+				</li>
+				<li class="layui-nav-item" lay-unselect="">
+					<a href="javascript:;" layadmin-event="refresh" title="刷新">
+						<i class="layui-icon layui-icon-refresh-3"></i>
+					</a>
+				</li>
+			</ul>
+			<ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+				<li class="layui-nav-item" lay-unselect>
+					<a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">
+						<i class="layui-icon layui-icon-notice"></i>
+
+						<!-- 如果有新消息，则显示小圆点 -->
+						<span class="layui-badge-dot"></span>
+					</a>
+				</li>
+				<li class="layui-nav-item layui-hide-xs" lay-unselect>
+					<a href="javascript:;" layadmin-event="theme">
+						<i class="layui-icon layui-icon-theme"></i>
+					</a>
+				</li>
+				<li class="layui-nav-item layui-hide-xs" lay-unselect>
+					<a href="javascript:;" layadmin-event="note">
+						<i class="layui-icon layui-icon-note"></i>
+					</a>
+				</li>
+				<li class="layui-nav-item layui-hide-xs" lay-unselect>
+					<a href="javascript:;" layadmin-event="fullscreen">
+						<i class="layui-icon layui-icon-screen-full"></i>
+					</a>
+				</li>
+				<li class="layui-nav-item" lay-unselect>
+					<a href="javascript:;">
+						<cite>贤心</cite>
+					</a>
+					<dl class="layui-nav-child">
+						<dd><a lay-href="set/user/info.html">基本资料</a></dd>
+						<dd><a lay-href="set/user/password.html">修改密码</a></dd>
+						<hr>
+						<dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+					</dl>
+				</li>
+
+				<li class="layui-nav-item layui-hide-xs" lay-unselect>
+					<a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+				</li>
+				<li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+					<a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 侧边菜单 -->
+		<div class="layui-side layui-side-menu">
+			<div class="layui-side-scroll">
+				<div class="layui-logo" lay-href="home/console.html">
+					<span>研究生以系统</span>
+				</div>
+
+				<ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+
+
+				</ul>
+			</div>
+		</div>
+
+		<!-- 页面标签 -->
+		<div class="layadmin-pagetabs" id="LAY_app_tabs">
+			<div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+			<div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+			<div class="layui-icon layadmin-tabs-control layui-icon-down">
+				<ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+					<li class="layui-nav-item" lay-unselect>
+						<a href="javascript:;"></a>
+						<dl class="layui-nav-child layui-anim-fadein">
+							<dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+							<dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+							<dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+				<ul class="layui-tab-title" id="LAY_app_tabsheader">
+					<li lay-id="home/console.html" lay-attr="home/console.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<!-- 主体内容 -->
+		<div class="layui-body" id="LAY_app_body">
+			<div class="layadmin-tabsbody-item layui-show">
+				<iframe src="" frameborder="0" class="layadmin-iframe"></iframe>
+			</div>
+		</div>
+
+		<!-- 辅助元素，一般用于移动设备下遮罩 -->
+		<div class="layadmin-body-shade" layadmin-event="shade"></div>
+	</div>
+</div>
+<script src="/static/layuiadmin/layui/layui.js"></script>
+<script src="/static/product/common/alljs/web.js"></script>
+<script>
+	layui.config({
+		base: basePath //静态资源所在路径
+	}).extend({
+		index: indexPath //主入口模块
+	}).use(['index', 'jquery','navbar','baseUtil','element', 'layer','form'], function(){
+		let baseUtil = layui.baseUtil;
+		let $ = layui.$;
+		let element = layui.element;
+		let form = layui.form;
+		let navbarData;
+		let navbarLeftData;
+		form.render();
+		baseUtil.ajax('PSOT',false,https + '/system/index/getUserModuleTree',{},'json','',function (res) {
+			navbarData = res.data.zmk;
+			let navTopHtml = ''
+			navbarData.forEach( item =>{
+				navTopHtml += `<li class="layui-nav-item s" lay-unselect>
+                          <a href="javascript:;" class="m" lay-type="${item.type}" lay-href="${item.url}" lay-mkbm="${item.mkbm}" title="${item.mkmc}">
+                            ${item.mkmc}
+                          </a>
+                        </li>`
+			})
+            $("#navTopList").find('span.layui-nav-bar').remove();
+			$('#navTopList').append(navTopHtml)
+            element.render();
+			setTimeout(function () {
+				$('#navTopList .layui-nav-item a:eq(2)').click()
+			},0)
+
+		})
+		$('#navTopList .layui-nav-item a.m').click(function () {
+			$('#LAY-system-side-menu').empty()
+			let layMkbm = $(this).attr('lay-mkbm')
+			let newNavbarData
+			newNavbarData = navbarData.filter((item=>{
+				return item.mkbm==layMkbm
+			}))
+			if(newNavbarData[0].zmk==null){
+				newNavbarData = newNavbarData
+			}else {
+				newNavbarData = newNavbarData[0].zmk
+			}
+
+			let navbarLeftHtm='';
+			function loadTree(data){
+				let dlHtml = '';
+				for(let i=0;i<data.length;i++){
+					if(data[i].zmk){
+						let childhtml = '';
+						data[i].zmk.forEach(item=>{
+							childhtml += `<dd data-name=""><a lay-href="${item.url}?_mkbm=${item.mkbm}" lay-mkbm="${item.mkbm}" >${item.mkmc}</a></dd>`
+						})
+						dlHtml += `<dd data-name="">
+									<a href="javascript:;" lay-mkbm="${data[i].mkbm}" >${data[i].mkmc}</a>
+									  <dl class="layui-nav-child">
+										   ${childhtml}
+									  </dl>
+									</dd>`
+					}else {
+						dlHtml +=  `<dd data-name=""><a lay-href="${data[i].url}?_mkbm=${data[i].mkbm}" lay-mkbm="${data[i].mkbm}">${data[i].mkmc}</a></dd>`
+					}
+					if (data[i].zmk != null) {
+						loadTree(data[i].zmk);
+					}
+				}
+				return dlHtml
+			}
+			newNavbarData.forEach( items =>{
+				navbarLeftHtm += `<li data-name="${items.mkbm}" class="layui-nav-item">
+                            ${
+						(function () {
+							if(items.zmk){
+								return ` <a href="javascript:;" lay-tips="${items.mkbm}" lay-direction="2">
+                                              <i class="layui-icon layui-icon-home"></i>
+                                              <cite>${items.mkmc}</cite>
+                                            </a>
+										<dl class="layui-nav-child">${loadTree(items.zmk)}</dl>`
+							}else {
+								return ` <a href="javascript:;" lay-href="${items.url}?_mkbm=${items.mkbm}" lay-tips="${items.mkbm}" lay-direction="2">
+                                              <i class="layui-icon layui-icon-home"></i>
+                                              <cite>${items.mkmc}</cite>
+                                            </a>`
+							}
+						})()
+				}
+
+                          </li>`
+			})
+			$('#LAY-system-side-menu').append(navbarLeftHtm);
+			element.render()
+
+            $('#navTopList').on('click','.layui-nav-item.s',function () {
+                $(this).addClass('h').siblings().removeClass('h')
+            })
+		})
+		// system/auto/queryEntityInfo?_mkbm=app_code
+
+	});
+</script>
+
+
+</body>
+</html>
+
+

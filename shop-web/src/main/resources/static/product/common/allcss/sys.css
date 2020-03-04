@@ -1,0 +1,164 @@
+.layui-form-item{margin-bottom: 0px; clear: both; *zoom: 1;}
+.layui-form-item:after{content:'\20'; clear: both; *zoom: 1; display: block; height:0;}
+.layui-form-label{position: relative; float: left; display: block; padding: 9px 3px 9px 3px;margin:0px 1px 0px 0px;  width: 110px; font-weight: 400; line-height: 20px; text-align: right;color:black;}
+.layui-form-label-col{display: block; float: none; padding: 9px 0; line-height: 20px; text-align: left;}
+.layui-form-item .layui-inline{margin-bottom: 5px; margin-right: 10px;}
+.layui-input-block, .layui-input-inline{position: relative;}
+.layui-input-block{margin-left: 110px; min-height: 36px;}
+.layui-input-inline{display: inline-block; vertical-align: middle;}
+.layui-form-item .layui-input-inlineall{float: left; width: 99%; margin-right: 10px;}
+.layui-form-item .layui-input-inline12{float: left; width: 96%; margin-right: 10px;}
+.layui-form-item .layui-input-inline11{float: left; width: 88%; margin-right: 10px;}
+.layui-form-item .layui-input-inline10{float: left; width: 80%; margin-right: 10px;}
+.layui-form-item .layui-input-inline9 {float: left; width: 72%; margin-right: 10px;}
+.layui-form-item .layui-input-inline8 {float: left; width: 64%; margin-right: 10px;}
+.layui-form-item .layui-input-inline7 {float: left; width: 56%; margin-right: 10px;}
+.layui-form-item .layui-input-inline6 {float: left; width: 48%; margin-right: 10px;}
+.layui-form-item .layui-input-inline5 {float: left; width: 40%; margin-right: 10px;}
+.layui-form-item .layui-input-inline4 {float: left; width: 32%; margin-right: 10px;}
+.layui-form-item .layui-input-inline3 {float: left; width: 24%; margin-right: 10px;}
+.layui-form-item .layui-input-inline2 {float: left; width: 16%; margin-right: 10px;}
+.layui-form-item .layui-input-inline1 {float: left; width: 8%; margin-right: 10px;}
+.layui-form-text .layui-input-inline{width:atuo;}
+
+.layui-form-item .layui-input-inlineauto{float: left; width: 55%; margin-right: 10px;}
+
+.layui-row:before, .layui-row:after{content: ''; display: block; clear: both;}
+.layui-row{background-color: #ffffff;}
+
+.grid-demo{padding: 10px; background-color: #f9f9f9; color: #black;font-weight:bold;}
+.grid-demo-nopadding{background-color: #f9f9f9; color: #black;font-weight:bold;}
+.grid-demo-bg1{background-color: #ffffff;}
+.grid-demo-bg2{background-color: #49A761;}
+.grid-demo-bg3{background-color: #38814A;}
+.layui-elem-quote{
+	background-color: #c8c8c8;
+}
+
+.layui-upload-img {
+    width: 92px;
+   
+    margin: 0 10px 10px 0;
+}
+
+.layui-btn-white {
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #fff;
+    width: 20px;
+    padding: 0;
+}
+
+/*分步样式*/
+#steps {
+}
+
+.step-item {
+	display: inline-block;
+	line-height: 26px;
+	position: relative;
+	background: #ffffff;
+}
+
+.step-item-tail {
+	width: 100%;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 13px;
+}
+
+.step-item-tail i {
+	display: inline-block;
+	width: 100%;
+	height: 1px;
+	vertical-align: top;
+	background: #c2c2c2;
+	position: relative;
+}
+.step-item-tail-done {
+	background: #009688 !important;
+}
+
+.step-item-head {
+	position: relative;
+	display: inline-block;
+	height: 26px;
+	width: 26px;
+	text-align: center;
+	vertical-align: top;
+	color: #009688;
+	border: 1px solid #009688;
+	border-radius: 50%;
+	background: #ffffff;
+}
+
+.step-item-head.step-item-head-active {
+	background: #009688;
+	color: #ffffff;
+}
+.step-item-head.step-item-head-current {
+	background: #FF5722;
+	color: #ffffff;
+}
+.step-item-main {
+	background: #ffffff;
+	display: block;
+	position: relative;
+}
+.step-item-main-title {
+	font-weight: bolder;
+	color: #555555;
+}
+.step-item-main-desc {
+	color: #aaaaaa;
+}
+
+/*办公日历*/
+#test-n2 {
+	position: relative;
+	min-height: 400px !important;
+	width: 100% !important;
+}
+/**
+#test-n2  #layui-laydate1,#test-n2  #layui-laydate1 .layui-laydate-main,#test-n2 .layui-laydate-content table{
+	width: 100%;
+}
+*/
+#test-n2 .layui-laydate-content table tbody{
+	height:calc(100vh - 240px)!important;
+}
+
+.laydate-content td{
+	width: 36px;
+    height: 80px;
+    padding: 5px;
+    text-align: center;
+}
+
+.text_box{
+	padding: 15px !important;
+}
+/**
+#layui-laydate1{
+	width: 100% !important;
+}
+*/
+
+
+/**表单样式*/
+
+.grid-demo{
+	padding: 0 10px;
+}
+.layui-input, .layui-select, .layui-textarea{
+	height: 30px;
+}
+.layui-form-label{
+	padding: 0px;
+	padding-right:5px;
+	line-height:30px;
+}
+.layui-form-item{
+	padding-bottom:10px;
+}

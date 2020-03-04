@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>研究生系统</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport"
+	content="width=1366, initial-scale=0.8, minimum-scale=0.8, maximum-scale=0.8, user-scalable=0">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+<link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css"	media="all">
+<link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+
+<style>
+.layui-layout-admin .layui-header a.more_a cite {
+
+}
+.layui-layout-admin .layui-header a.more_a .layui-nav-more{
+	right: -16px;
+	
+}
+.layui-layout-admin .layui-header .layui-nav .layui-nav-child#more{
+	
+}
+.layui-layout-admin .layui-header .layui-nav .layui-nav-child#more a{
+	padding: 0 20px;
+}
+.layui-layout-admin .layui-header .layui-nav-child{
+	top: 50px;
+}
+/* .iu{
+	display: block;
+	width: 36px;
+	height: 5px;
+	margin: 10px;
+	position: absolute;
+	bottom: -13px;
+	left: -12px;
+} */
+		#yjfk{
+			border-radius: 3px;
+			position: fixed;
+			right: 15px;
+			bottom: 15px;
+			z-index: 9999;
+			text-align: center;
+			font-size: 24px;
+			cursor: pointer;
+			background: #1e9fff;
+			padding:5px;
+			border-radius:3px;
+			animation: fontColor 3s infinite;
+		}
+		.layui-icon-reply-fill{
+			font-size: 28px;
+			color:#fff;
+			
+		}
+		
+		@keyframes fontColor{
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		
+</style>
+<script>
+	/^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
+</script>
+</head>
+<body class="layui-layout-body">
+	<div id="yjfk" title="意见反馈">
+		<i class="layui-icon layui-icon-reply-fill"><span style="font-size:12px;position: relative;top:-6px;padding-left:5px;">意见反馈</span></i>
+		<span id="xs" style="display:none;">student</span>
+	</div>
+	<div id="LAY_app">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域 -->
+				<ul class="layui-nav layui-layout-left" id="topMenuUl">
+					<li class="layui-nav-item layadmin-flexible" lay-unselect><a href="javascript:;" layadmin-event="flexible" title="侧边伸缩"><i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i></a></li>
+					<li class="layui-nav-item" lay-unselect><a href="javascript:;" layadmin-event="refresh" title="刷新"><i class="layui-icon layui-icon-refresh-3"></i></a></li>
+				</ul>
+				
+				<ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+					<li class="layui-nav-item layui-hide-xs" lay-unselect>
+<!-- 						<input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search" layadmin-event="serach" lay-action="template/search.html?keywords="> -->
+<!-- 						<select name="qwcdss" id="qwcdss" lay-filter="zwebselect1" lay-search></select> -->
+							<form class="layui-form" lay-filter="component-form-group" id="editForm" >
+								<div class="layui-form-item">
+	<!-- 			            		<label class="layui-form-label">全文菜单搜索</label> -->
+				                		<div style="color:black;padding-top:1.5%;">
+											<select name="qwcdss" id="qwcdss" lay-filter="qwcdss"  lay-search>
+											</select>
+										</div>
+								</div>
+							</form>
+					</li>
+					<li class="layui-nav-item" lay-unselect><a href="javascript:;"><cite>语言</cite></a>
+						<dl class="layui-nav-child" id="qhyyDl">
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-hide-xs" lay-unselect><a href="javascript:;" layadmin-event="fullscreen"> <i class="layui-icon layui-icon-screen-full"></i></a></li>
+					
+					<li class="layui-nav-item" lay-unselect><a href="javascript:;"><cite id="loginUser_yhxm">用户</cite></a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a lay-href="sys/user/info.html">基本资料</a>
+							</dd>
+							<dd>
+								<a lay-href="sys/user/password.html">更改密码</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" layadmin-event="theme">配色方案</a>
+							</dd>
+							<hr/>
+							<dd id="logout" style="text-align: center;">
+								<a>退出</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 侧边菜单 -->
+			<div class="layui-side layui-side-menu">
+				<div class="layui-side-scroll" id="auto-layui-side-menu"></div>
+			</div>
+			
+			<!-- 页面标签 -->
+			<div class="layadmin-pagetabs" id="LAY_app_tabs">
+				<div class="layui-icon layadmin-tabs-control layui-icon-prev"
+					layadmin-event="leftPage"></div>
+				<div class="layui-icon layadmin-tabs-control layui-icon-next"
+					layadmin-event="rightPage"></div>
+				<div class="layui-icon layadmin-tabs-control layui-icon-down">
+					<ul class="layui-nav layadmin-tabs-select"
+						lay-filter="layadmin-pagetabs-nav">
+						<li class="layui-nav-item" lay-unselect><a
+							href="javascript:;"></a>
+							<dl class="layui-nav-child layui-anim-fadein">
+								<dd layadmin-event="closeThisTabs">
+									<a href="javascript:;">关闭当前标签页</a>
+								</dd>
+								<dd layadmin-event="closeOtherTabs">
+									<a href="javascript:;">关闭其它标签页</a>
+								</dd>
+								<dd layadmin-event="closeAllTabs">
+									<a href="javascript:;">关闭全部标签页</a>
+								</dd>
+							</dl></li>
+					</ul>
+				</div>
+				<!-- 删除后，页签、页面不出 -->
+				<div class="layui-tab" lay-unauto lay-allowClose="true"
+					lay-filter="layadmin-layout-tabs">
+					<ul class="layui-tab-title" id="LAY_app_tabsheader">
+						<li id="LAY_app_tabsheader_li" lay-id="" lay-attr=""
+							class="layui-this"></li>
+					</ul>
+				</div>
+				
+			</div>
+
+			<!-- 主体内容。删除后，页面不出 -->
+			<div class="layui-body" id="LAY_app_body">
+				<div class="layadmin-tabsbody-item layui-show">
+					<iframe id="LAY_app_body_iframe" src="" frameborder="0"
+						class="layadmin-iframe"></iframe>
+				</div>
+			</div>
+			
+			<!-- 辅助元素，一般用于移动设备下遮罩 -->
+			<div class="layadmin-body-shade" layadmin-event="shade"></div>
+		</div>
+		<div class="yjfk">
+			<i class="layui-icon layui-icon-face-smile"></i>  
+		</div>
+		
+		
+	</div>
+
+	<script src="/static/layuiadmin/layui/layui.js"></script>
+	<script src="/static/product/common/alljs/web.js"></script>
+	<script>
+		layui.config({
+			base : basePath, //静态资源所在路径
+			version: new Date().getTime()
+		}).extend({
+			index : indexPath //主入口模块
+		}).use(['index','jquery','navbar','baseUtil','element', 'layer','form'],function(){
+			var baseUtil = layui.baseUtil;
+			var $ = layui.$;
+			var index = layui.index;
+			var navbar = layui.navbar;
+			var admin = layui.admin;
+			var setter = layui.setter;
+			var form = layui.form;
+			form.render();
+			var _accessToken = layui.data(setter.tableName, {key: setter.request.tokenName });
+			console.log("_accessToken index.html="+_accessToken);
+			//全文搜索绑定事件
+			form.on('select(qwcdss)', function(data){
+				var $elem = $(data.elem);
+				if($elem&&$elem.val()&&$elem.val()!='-1'){
+					if(top.layui.index){
+				        top.layui.index.openTabsPage($elem.val(),$elem.find("option:selected").attr('name'))
+				    }else{
+				        window.open(data.value)
+				    }
+				}
+			});
+			//绑定退出事件
+			$('#logout').on('click',function(){
+				//执行退出接口
+			    admin.req({
+			      url: wlWeb +'/sys?_service=/user/logout'
+			      ,type: 'get'
+			      ,data: {}
+			      ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
+			      }
+			      ,success:function(){
+			    		//清空本地记录的 token，并跳转到登入页
+				    	//清空本地记录的 token
+			    	    layui.data(setter.tableName, {
+			    	      key: setter.request.tokenName
+			    	      ,remove: true
+			    	    });
+			    	    //跳转到登入页
+			    	    location.href = wlProtocol+wlHost+wlPort
+	     								+wlWeb+'/view/sys/user/login.html';
+			      }
+			      ,error:function(){
+			    		//清空本地记录的 token，并跳转到登入页
+				    	//清空本地记录的 token
+			    	    layui.data(setter.tableName, {
+			    	      key: setter.request.tokenName
+			    	      ,remove: true
+			    	    });
+			    	    //跳转到登入页
+			    	    location.href = wlProtocol+wlHost+wlPort
+	     								+wlWeb+'/view/sys/user/login.html';
+			      }
+			    });
+			});
+			//加载顶部语言列表
+			admin.req({
+					type : "GET",
+					async : false,
+					url : wlYuyanUrl,//(必需)
+					data : {},// 参数
+					dataType : "json",
+					success : function(data, status) {
+						if(data.code==1001){//错误码1表示没有用户信息,应该跳转到登录页面
+							$('#logout').click();
+						    return;
+						}
+						if(!data.datas){//没有数据，直接返回
+							return;
+						}
+						var dataObj = data.datas;//顶部菜单
+						
+						var topYyDl = $('#qhyyDl');
+						for(var i=0; i<dataObj.length; i++){
+							var dlDDStr =  '<dd>';
+								dlDDStr += '<a href="javascript:void(0);" id="'+dataObj[i].langkey+'" title="'+dataObj[i].langvalue+'">'+dataObj[i].langvalue+'</a>';
+								dlDDStr += '</dd>';
+							 	topYyDl.append(dlDDStr);
+						}
+						
+						//顶部菜单绑定事件
+					    $('#qhyyDl a').on('click',function(){
+			    			var langkey = $(this).attr("id");
+							admin.req({
+								type : "GET",
+								async : false,
+								url : wlSzYuyanUrl+langkey,//(必需)
+								data : {},// 参数
+								dataType : "json",
+								success : function(data, status) {
+									location.href = wlProtocol+wlHost+wlPort+wlWeb+wlModuleWeb+'/index.html';
+								},
+								error : function(XMLHttpRequest, textStatus, errorThrown) {
+									layer.msg("切换语言出错");
+								}
+							});
+						});
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						layer.msg("顶部语言列表加载出错");
+					}
+			});
+			
+			//加载顶部菜单
+		    admin.req({
+				type : "GET",
+				async : false,
+				url : wlWeb+"/sys?_service=/user/getUserMenu&sublevel=1",//(必需)
+				data : {},// 参数
+				dataType : "json",
+				success : function(data, status) {
+					if(data.code==1001){//错误码1表示没有用户信息,应该跳转到登录页面
+						$('#logout').click();
+					    return;
+					}
+					if(!data.data){//没有菜单数据，直接返回
+						return;
+					}
+					
+					//设置顶部菜单
+					// var dataObj = data.data;//顶部菜单
+					var len = data.data.length
+				
+					var topMenuUl = $('#topMenuUl');
+					
+					var dataOne = data.data.splice(0,len-2)
+					var dataMore = data.data
+					var dataObj = dataOne.concat(dataMore)
+					
+					if(document.body.clientWidth<1400){
+						var str1='';
+						var str2='';
+						for(var i=0; i<dataOne.length; i++){
+							var ulLiStr =  '<li class="layui-nav-item layui-hide-xs" lay-unselect style="height:47px;margin:0;padding:0 15px;text-align:center;">';
+							 	ulLiStr += '<a href="javascript:void(0);" otherurl="'+dataOne[i].url+'" id="'+dataOne[i].name+'" title="'+dataOne[i].title+'">'+dataOne[i].title+'</a>';
+							 	ulLiStr += '</li>';
+							 	str1 += ulLiStr
+						}
+						var moreText = '<li class="layui-nav-item layui-nav-item_more"><a class="more_a" href="javascript:;"><cite>更多</cite><span class="layui-nav-more"></span></a><dl class="layui-nav-child layui-anim layui-anim-upbit" id="more"></dl></li>'
+						str1+=moreText
+						for(var i=0; i<dataMore.length; i++){
+							
+							var ulLiStr2 = '<dd><a href="javascript:void(0);" otherurl="'+dataMore[i].url+'" id="'+dataMore[i].name+'" title="'+dataMore[i].title+'">'+dataMore[i].title+'</a></dd>'
+							 	str2 += ulLiStr2
+						}
+						topMenuUl.append(str1)
+						$('#more').append(str2)
+						
+						
+						
+					}else{
+						
+						for(var i=0; i<dataObj.length; i++){
+							var ulLiStr =  '<li class="layui-nav-item layui-hide-xs" lay-unselect style="height:47px;margin:0;padding:0 15px;text-align:center;">';
+							 	ulLiStr += '<a href="javascript:void(0);" otherurl="'+dataObj[i].url+'" id="'+dataObj[i].name+'" title="'+dataObj[i].title+'">'+dataObj[i].title+'</a>';
+							 	ulLiStr += '</li>';
+							topMenuUl.append(ulLiStr);
+						}
+					}
+					
+					//顶部菜单绑定事件
+				    $('#topMenuUl .layui-hide-xs a').on('click',function(){
+				    	if(baseUtil.getSessionUser()){
+				    		var loginUser = baseUtil.getSessionUser();
+							if(loginUser.yhlxbm=='yy'){
+								$('#xs').text('yy')
+							}else if(loginUser.yhlxbm=='xy'){
+								$('#xs').text('xy')
+							}else if(loginUser.yhlxbm=='ds'){
+								$('#xs').text('ds')
+							}else{
+								$('#xs').text('xs')
+							}
+							$("#loginUser_yhxm").text(loginUser.yhxm);
+							
+				    		var mkbm = $(this).attr("id");
+			    			//首页，跳转到独立制作的页面 ，四类首页模块编号： yy.sy  xy.sy   ds.sy   xs.sy 
+			    			if(mkbm=='yjs.yy.sy'||mkbm=='yjs.xy.sy'||mkbm=='yjs.ds.sy'||mkbm=='yjs.xs.sy'){
+			    				location.href = wlProtocol+wlHost+wlPort+wlWeb+wlModuleWeb+$(this).attr("otherurl");
+			    				return;
+			    			}else{
+				    			navbar.render({
+			    					menuTitle:"研究生系统",//菜单标题
+			    			        elem: '#auto-layui-side-menu',//菜单layui-side-scroll的ID
+			    			        cached: false,
+			    					url: wlWeb+"/sys?_service=/user/getUserMenu&fmkbm="+mkbm+"&_accessToken="+_accessToken		
+				    			});		    				
+			    			}
+			    			
+			    			$('#topMenuUl .layui-hide-xs').each(function(index, element) {
+			    				$(this).css({
+			    			    	//"background-color":"#1e9fff"
+			    					"background-color":""
+			    			    });
+			    			});
+			    			$(this).parent().css({"background-color":"#009688"});
+				    	}
+					});
+				    $('#topMenuUl .layui-hide-xs a').each(function(index, element) {
+				    	if(index==1){
+				    		$(this).click();
+				    	}
+	    			});
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					layer.msg("顶部菜单加载出错");
+				}
+			});
+			
+		    //加载顶部菜单搜索框
+		    admin.req({
+				type : "GET",
+				async : false,
+				url : wlWeb+"/sys?_service=/user/getUserMenuForSearch",//(必需)
+				data : {},// 参数
+				dataType : "json",
+				success : function(data, status) {
+					if(data.code==1001){//错误码1表示没有用户信息,应该跳转到登录页面
+						$('#logout').click();
+					    return;
+					}
+					if(!data.data){//没有菜单数据，直接返回
+						return;
+					}
+					var dataObj = data.data;//顶部菜单
+					//设置顶部菜单
+					var $topSelect = $('#qwcdss');
+					$topSelect.html('');
+					var topSelectStr = '<option value="-1">菜单搜索</option>';
+					for(var i=0; i<dataObj.length; i++){
+						if(dataObj[i].children){
+							topSelectStr += '<optgroup label="'+dataObj[i].title+'">';
+							var childrenData = dataObj[i].children;
+							for(var j=0;j<childrenData.length;j++){
+								topSelectStr += '<option value="'+childrenData[j].url+'" name="'+childrenData[j].title+'">'+childrenData[j].showtitle+'</option>';
+							}
+							topSelectStr += '</optgroup>';
+						}else{
+							topSelectStr += '<option value="'+dataObj[i].url+'" name="'+dataObj[i].title+'">'+dataObj[i].title+'</option>';
+						}
+					}
+					$topSelect.append(topSelectStr);
+					form.render();
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					layer.msg("加载顶部菜单搜索框");
+				}
+			});
+			$('.layui-nav-item_more').hover(function(){
+				$(this).find('.layui-nav-more').addClass('layui-nav-mored')
+				$(this).find('#more').css('display','block')
+			},function(){
+				$(this).find('.layui-nav-more').removeClass('layui-nav-mored')
+				$(this).find('#more').css('display','none')
+			})
+			// 意见反馈
+			$('#yjfk').click(function(){
+				layer.open({
+					btnAlign: 'c',
+					type : 2,
+					title : "意见反馈",
+					content : '/web/view/sys/user/suggestion.html',
+					maxmin : !0,
+					area : ['700px','500px']
+				});
+			})
+		});
+		
+		
+	</script>
+</body>
+</html>
+
+

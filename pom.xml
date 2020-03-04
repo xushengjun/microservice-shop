@@ -12,6 +12,9 @@
     <artifactId>shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>shop</name>
+
+    <!-- 作用 父级必须是pom -->
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>

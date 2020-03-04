@@ -1,0 +1,64 @@
+/* CSS Document */
+body{
+	background:#ededed;
+}
+body,h1,h2,h3,h4,h5,h6,p,dl,dd{
+	margin:0;
+	font-size:12px;
+	font-family:"tahoma, arial", "Hiragino Sans GB", "宋体", "sans-serif";
+}
+ul,ol{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+b,h1,h2,h3,h4,h5,h6{
+	font-weight:normal;
+}
+i,em{
+	font-style:normal;
+}
+a{
+	text-decoration:none;
+	color:"";
+}
+img{
+	border:0;
+	vertical-align:top;
+}
+input,textarea,select,option,fieldset{
+	margin:0;
+	padding:0;
+	border:0;
+	background:none;
+	vertical-align:top;
+}
+.clearfix:after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+	visibility:hidden;
+}
+.clearfix{
+	zoom:1;
+}
+/*--------------------------float----------------------------------*/
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+div ul li .red{
+	color:#f22e00;
+}
+div a{
+	color:#6b6b6b;
+}
+
+
+
+
+

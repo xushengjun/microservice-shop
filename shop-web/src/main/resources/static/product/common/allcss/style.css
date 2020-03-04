@@ -1,0 +1,68 @@
+BODY {
+	FONT-FAMILY: "Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu; BACKGROUND: #f8f8f8; COLOR: #000
+}
+.page-container {
+	MARGIN: 200px auto 0px
+}
+H1 {
+	FONT-SIZE: 30px; FONT-WEIGHT: 700; text-shadow: 0 1px 4px rgba(0,0,0,.2)
+}
+FORM {
+	WIDTH: 305px; POSITION: relative; TEXT-ALIGN: center; MARGIN: 0px auto
+}
+INPUT {
+	FONT-SIZE: 14px; BORDER-TOP: #3d3d3d 1px solid; HEIGHT: 42px; FONT-FAMILY: 'PT Sans', Helvetica, Arial, sans-serif; BORDER-RIGHT: #3d3d3d 1px solid; WIDTH: 270px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: #3d3d3d 1px solid; COLOR: #fff; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 15px; BORDER-LEFT: #3d3d3d 1px solid; LINE-HEIGHT: 42px; PADDING-RIGHT: 15px; text-shadow: 0 1px 2px rgba(0,0,0,.1); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; -o-transition: all .2s; -moz-transition: all .2s; -webkit-transition: all .2s; -ms-transition: all .2s
+}
+INPUT:unknown {
+	COLOR: #fff
+}
+INPUT:unknown {
+	COLOR: #fff
+}
+INPUT:unknown {
+	COLOR: #fff
+}
+INPUT:focus {
+	OUTLINE-STYLE: none; -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset,
+        0 2px 7px 0 rgba(0,0,0,.2)
+}
+BUTTON {
+	BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 14px; CURSOR: pointer; HEIGHT: 44px; FONT-FAMILY: 'PT Sans', Helvetica, Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; WIDTH: 150px; BACKGROUND: #ef4300; BORDER-BOTTOM-WIDTH: 0px; MARGIN-TOP: 25px; FONT-WEIGHT: 700; COLOR: #fff; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; text-shadow: 0 1px 2px rgba(0,0,0,.1); -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; -moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); -o-transition: all .2s; -moz-transition: all .2s; -webkit-transition: all .2s; -ms-transition: all .2s
+}
+BUTTON:hover {
+	-moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2)
+}
+BUTTON:active {
+	BORDER-TOP: #ef4300 0px solid; BORDER-RIGHT: #ef4300 0px solid; BORDER-BOTTOM: #ef4300 0px solid; BORDER-LEFT: #ef4300 0px solid; -moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2); box-shadow: 0 5px 8px 0 rgba(0,0,0,.1) inset,
+        0 1px 4px 0 rgba(0,0,0,.1)
+}
+.connect {
+	FONT-SIZE: 14px; WIDTH: 800px; MARGIN: 50px auto 0px; text-shadow: 0 1px 3px rgba(0,0,0,.2)
+}
+.connect P {
+	POSITION: relative; LEFT: -140%; TOP: 0px
+}
+.connect A {
+	HEIGHT: 35px; WIDTH: 32px; MARGIN-TOP: 15px; DISPLAY: inline-block; -o-transition: all .2s; -moz-transition: all .2s; -webkit-transition: all .2s; -ms-transition: all .2s
+}
+
+.layadmin-user-login-footer{
+	position: absolute; left: 0; bottom: 0; width: 100%; line-height: 30px; padding: 20px; text-align: center; box-sizing: border-box; color: rgba(0,0,0,.5)
+}
+
+/* 弹出面板 */
+.layui-layer-admin .layui-layer-title{height: 50px; line-height: 50px; border: none 0; background-color: #20222A; color: #fff;}
+.layui-layer-admin i[close]{position: absolute; padding: 5px; right: 10px; top: 12px; color: #fff; cursor: pointer;}
+.layui-layer-admin .layui-layer-content{padding: 20px; line-height: 22px;}
+.layui-layer-admin .layui-layer-content cite{font-style: normal; color: #FF5722;}
+

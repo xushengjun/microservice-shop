@@ -1,6 +1,8 @@
 # dev environment
 spring:
   profiles: dev
+  application:
+    name: shop-eureka
 server:
   port: 9000
 eureka:

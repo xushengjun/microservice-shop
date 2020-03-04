@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .btn-group, .input-group {
+            margin: 5px 0;
+        }
+
+        .tooltip-arrow {
+            left: 50% !important;
+        }
+
+        .tooltip {
+            white-space: nowrap;
+            position: fixed !important;
+            left: 200px !important;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="Sortable.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div>
+            <h3>实体编号 <small id="_stbm"> app_code</small></h3>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="showType" checked value="base">
+                正常
+            </label>
+            <label>
+                <input type="radio" name="showType" value="list">
+                列表
+            </label>
+            <label>
+                <input type="radio" name="showType" value="search">
+                查询
+            </label>
+            <label>
+                <input type="radio" name="showType" value="edit">
+                编辑
+            </label>
+            <label>
+                <input type="radio" name="showType" value="export">
+                导出
+            </label>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <div type="button" href="javascript:;" class="btn btn-default" id="addNormalLine">添加普通行</div>
+            <div type="button" href="javascript:;" class="btn btn-default" id="addCzlLine">添加操作列</div>
+            <div type="button" href="javascript:;" class="btn btn-default" id="addFgfLine">添加分隔符</div>
+            <div type="button" href="javascript:;" class="btn btn-default" id="autorownum">编辑行号自动生成</div>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <div type="button" href="javascript:;" class="btn btn-default" id="qx">全选</div>
+            <div type="button" href="javascript:;" class="btn btn-default" id="delXzLine">删除选中行</div>
+        </div>
+
+        <div type="button" href="javascript:;" class="btn btn-default" id="sub">提交</div>
+
+
+        <div class="input-group col-sm-4">
+            <input type="text" id="tableName" class="form-control" placeholder="根据数据库表加载属性，请输入表名" aria-label="...">
+            <div class="input-group-btn">
+                <div type="button" href="javascript:;" class="btn btn-default" id="loadFromDb">加载数据</div>
+            </div>
+        </div>
+        <!--<table class="table table-hover" >
+            <thead>
+                <tr>
+                    <th></th><th>实体项编号</th><th>实体项名称</th><th>来源表名</th><th>来源列名</th>
+                </tr>
+            </thead>
+            <tbody id="tab1">
+            <tr class="ss">
+                <th></td><td>实体项编号1</td><td>实体项名称</td><td>来源表名</td><td>来源列名</td>
+            </tr ><tr class="ss">
+                <td></td><td>实体项编号2</td><td>实体项名称</td><td>来源表名</td><td>来源列名</td>
+            </tr><tr class="ss">
+                <td></td><td>实体项编号3</td><td>实体项名称</td><td>来源表名</td><td>来源列名</td>
+            </tr><tr class="ss">
+                <td></td><td>实体项编号4</td><td>实体项名称</td><td>来源表名</td><td>来源列名</td>
+            </tr>
+            </tbody>
+        </table>-->
+        <table class="table table-hover table-striped" id="mainTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list-unstyled">
+                <li>实体编号</li>
+                <li>实体项编号</li>
+                <li>实体项名称</li>
+                <li>来源表名</li>
+                <li>来源列名</li>
+                <li>是否列表使用</li>
+                <li>表格表头</li>
+                <li>列类型</li>
+                <li>列宽度</li>
+                <li>固定列</li>
+                <li>字段事件名称</li>
+                <li>隐藏/显示</li>
+                <li>排序号</li>
+                <li>是否查寻项</li>
+                <li>查询名称</li>
+                <li>查询类型</li>
+                <li>查询规则</li>
+                <li>查询类别</li>
+                <li>查询排序号</li>
+                <li>规定编辑项可选范围</li>
+                <li>编辑项title</li>
+                <li>编辑项内容</li>
+                <li>编辑行号</li>
+                <li>宽度</li>
+                <li>编辑顺序</li>
+                <li>校验格式</li>
+                <li>查看页面字段</li>
+                <li>默认导出字段可选范围</li>
+                <li>导出表头</li>
+                <li>导出排序号</li>
+                <li>导出转换规则</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--<ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>-->
+
+
+    <table class="hide">
+
+    </table>
+
+
+    <!-- <ul class="list-group">
+         <li class="list-group-item">Cras justo odio</li>
+     </ul>-->
+
+</div>
+<script src="bootstrap.min.js"></script>
+
+<script>
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return null;
+    }
+    let stbh = getQueryVariable("_mkbm");
+    let tab = $("#mainTable");
+    $("#_stbm").text(stbh);
+    let changePxh = function () {
+
+    }
+
+    let sort = function () {
+
+    }
+
+    let sortable = new Sortable(tab.find("tbody").get(0), {
+        animation: 150,
+        draggable: '.str',
+        ghostClass: 'blue-background-class',
+        dataIdAttr: 'data-id',
+        // 列表内元素顺序更新的时候触发
+        onUpdate: function (/**Event*/evt) {
+            let stopIndex = evt.oldIndex > evt.newIndex ? evt.oldIndex : evt.newIndex;
+            let type = $("input[name='showType']:checked").val();
+            let updatePxhField = {
+                base: {field: "listpxh", skip: ["fgf"]},
+                list: {field: "listpxh", skip: ["fgf"]},
+                search: {field: "searchpxh", skip: ["fgf", 'czl']},
+                export: {field: "exportpxh", skip: ["fgf", 'czl']},
+                edit: {field: "editnum", skip: ["czl"]}
+            }
+            let dataIds = sortable.toArray();
+            for (let i = 0; i < dataIds.length; i++) {
+                const dataId = dataIds[i];
+                if (updatePxhField[type]) {
+                    let ratio = 100;
+                    let skip = updatePxhField[type]["skip"];
+                    let selector = "tbody tr";
+                    for (const sk of skip) {
+                        selector += "[sp-type!='" + sk + "']";
+                    }
+                    let inpName = updatePxhField[type]["field"];
+                    tab.find(selector).each(function (i) {
+                        if (i > stopIndex) return false;
+                        $(this).find("input[name='" + inpName + "']").val((i + 1) * ratio);
+                    })
+                }
+            }
+
+        }
+    });
+
+    $("#px").click(function () {
+        console.log(222);
+        sortable.sort();
+    });
+    let inputDom = function (item, val, readonly) {
+        let inp = $(document.createElement("input"));
+        inp.addClass("form-control");
+        inp.css("min-width", "100px");
+        inp.attr("name", item.field);
+        if (item.verify)
+            inp.attr("verify", item.verify);
+        inp.attr("placeholder", item.title);
+        inp.attr("title", item.title);
+        if (val)
+            inp.val(val);
+        if (readonly)
+            inp.attr("readonly", "readonly");
+        return inp;
+    }
+    let textDom = function (item, val) {
+        return inputDom(item, val, true);
+    }
+    let listtypeDom = function (item, val, readonly) {
+        if (readonly) return textDom(item, val);
+        let sel = $(document.createElement("select"));
+        sel.css("min-width", "100px");
+        sel.addClass("form-control");
+        sel.attr("name", item.field);
+        sel.attr("title", item.title);
+        sel.append("<option value=''></option>")
+        sel.append("<option value='normal'>常规列</option>")
+        sel.append("<option value='checkbox'>多选框</option>")
+        sel.append("<option value='radio'>单选框</option>")
+        sel.append("<option value='numbers'>序号列</option>")
+        sel.append("<option value='space'>空列</option>")
+        if (val)
+            sel.val(val);
+        return sel;
+    }
+    let searchtypeDom = function (item, val, readonly) {
+        if (readonly) return textDom(item, val);
+        let sel = $(document.createElement("select"));
+        sel.css("min-width", "100px");
+        sel.addClass("form-control");
+        sel.attr("name", item.field);
+        sel.attr("title", item.title);
+        sel.append("<option value=''></option>")
+        sel.append("<option value='text'>文本</option>")
+        sel.append("<option value='select'>下拉框</option>")
+        sel.append("<option value='date'>日期</option>")
+        sel.append("<option value='datebetween'>日期区间</option>")
+        if (val)
+            sel.val(val);
+        return sel;
+    }
+    let edittypeDom = function (item, val, readonly) {
+        if (readonly) return textDom(item, val);
+        let sel = $(document.createElement("select"));
+        sel.css("min-width", "100px");
+        sel.addClass("form-control");
+        sel.attr("name", item.field);
+        sel.attr("title", item.title);
+        sel.append("<option value=''></option>");
+        sel.append("<option value='text'>text</option>");
+        sel.append("<option value='select'>select</option>");
+        sel.append("<option value='checkbox'>checkbox</option>");
+        sel.append("<option value='file'>file</option>");
+        sel.append("<option value='filelist'>filelist</option>");
+        sel.append("<option value='img'>img</option>");
+        sel.append("<option value='date'>date</option>");
+        sel.append("<option value='fgf'>fgf</option>");
+        sel.append("<option value='button'>button</option>");
+        sel.append("<option value='textarea'>textarea</option>");
+        sel.append("<option value='div'>div</option>");
+        if (val)
+            sel.val(val);
+        return sel;
+    }
+    let searchlbDom = function (item, val, readonly) {
+        if (readonly) return textDom(item, val);
+        let sel = $(document.createElement("select"));
+        sel.css("min-width", "100px");
+        sel.addClass("form-control");
+        sel.attr("name", item.field);
+        sel.attr("title", item.title);
+        sel.append("<option value=''></option>")
+        sel.append("<option value='eq'>=</option>")
+        sel.append("<option value='ne'>!=</option>")
+        sel.append("<option value='gt'>></option>")
+        sel.append("<option value='ge'>>=</option>")
+        sel.append("<option value='lt'><=</option>")
+        sel.append("<option value='le'><=</option>")
+        sel.append("<option value='between'>between ... and ...</option>")
+        sel.append("<option value='notBetween'>not between ... and ...</option>")
+        sel.append("<option value='like'>like %...%</option>")
+        sel.append("<option value='notLike'>not like  %...%</option>")
+        sel.append("<option value='likeLeft'>like %...</option>")
+        sel.append("<option value='likeRight'>like ...%</option>")
+        sel.append("<option value='isNull'>is null 传值的时候请传Y或N,以确定是否执行此条件</option>")
+        sel.append("<option value='isNotNull'>is not null 传值的时候请传Y或N,以确定是否执行此条件</option>")
+        sel.append("<option value='in'>in (...,...)</option>")
+        sel.append("<option value='notIn'>not in (...,...)</option>")
+        if (val)
+            sel.val(val);
+        return sel;
+    }
+    let xzlDom = function () {
+        let ce = $(document.createElement("input"));
+        ce.attr("type", "checkbox");
+        ce.attr("xzl", "xzl");
+        return ce;
+    }
+    let ynDom = function (item, val, readonly) {
+        if (readonly) return textDom(item, val);
+        let sel = $(document.createElement("select"));
+        sel.addClass("form-control");
+        sel.attr("name", item.field);
+        sel.attr("title", item.title);
+        sel.append("<option value=''></option>")
+        sel.append("<option value='Y'>是</option>")
+        sel.append("<option value='N'>否</option>")
+        if (val)
+            sel.val(val);
+        return sel;
+    }
+
+    let stbhDom = function (item) {
+        return textDom(item, stbh);
+    }
+
+    let tableModule = [
+        {title: "#", field: "#", type: "base", domConstructor: xzlDom, must: true},
+        {title: "实体编号", field: "stbh", verify: "required", type: "base", domConstructor: stbhDom},
+        {title: "实体项编号", field: "stxbh", verify: "required", type: "base", domConstructor: inputDom},
+        {title: "实体项名称", field: "dbname", verify: "required", type: "base", domConstructor: inputDom},
+        {title: "来源表名", field: "dblybm", type: "base", domConstructor: inputDom},
+        {title: "来源列名", field: "dblylm", type: "base", domConstructor: inputDom},
+        {title: "是否列表使用", field: "islist", type: "list", domConstructor: ynDom},
+        {title: "列表标题", field: "listtitle", type: "list", domConstructor: inputDom},
+        {title: "列类型", field: "listtype", type: "list", domConstructor: listtypeDom},
+        {title: "列宽度", field: "listwhdth", type: "list", domConstructor: inputDom},
+        {title: "固定列", field: "listfixed", type: "list", domConstructor: inputDom},
+        {title: "列转换模板", field: "listtemplet", type: "list", domConstructor: inputDom},
+        {title: "列是否隐藏", field: "listhide", type: "list", domConstructor: ynDom},
+        {title: "列排序号", field: "listpxh", type: "list", domConstructor: inputDom},
+        {title: "是否查寻项", field: "issearch", type: "search", domConstructor: ynDom},
+        {title: "查询名称", field: "searchtitle", type: "search", domConstructor: inputDom},
+        {title: "查询类型", field: "searchtype", type: "search", domConstructor: searchtypeDom},
+        {title: "查询规则", field: "searchformat", type: "search", domConstructor: inputDom},
+        {title: "查询机制", field: "searchlb", type: "search", domConstructor: searchlbDom},
+        {title: "查询是否显示", field: "searchhide", type: "search", domConstructor: ynDom},
+        {title: "查询排序号", field: "searchpxh", type: "search", domConstructor: inputDom},
+        {title: "是否编辑项", field: "isedit", type: "edit", domConstructor: ynDom},
+        {title: "编辑项标题", field: "edittitle", type: "edit", domConstructor: inputDom},
+        {title: "编辑项注释", field: "editcomment", type: "edit", domConstructor: inputDom},
+        {title: "编辑项类型", field: "edittype", type: "edit", domConstructor: edittypeDom},
+        {title: "编辑格式", field: "editformat", type: "edit", domConstructor: inputDom},
+        {title: "编辑行号", field: "editrownum", type: "edit", domConstructor: inputDom},
+        {title: "编辑顺序", field: "editnum", type: "edit", domConstructor: inputDom},
+        {title: "宽度", field: "eidtwidth", type: "edit", domConstructor: inputDom},
+        {title: "校验格式", field: "editverify", type: "edit", domConstructor: inputDom},
+        {title: "查看页面字段", field: "viewfield", type: "edit", domConstructor: ynDom},
+        {title: "是否可导出", field: "isexport", type: "export", domConstructor: ynDom},
+        {title: "导出标题", field: "exporttitle", type: "export", domConstructor: inputDom},
+        {title: "导出排序号", field: "exportpxh", type: "export", domConstructor: inputDom},
+        {title: "导出转换模板", field: "exporttemplet", type: "export", domConstructor: inputDom}
+    ];
+
+    let createTable = function () {
+        let di = 1;
+        let createTitleCol = function () {
+            let fieldTr = "<tr>";
+            let titleTr = "<tr>"
+            for (const dum of tableModule) {
+                fieldTr += "<th style='white-space:nowrap;'>" + dum.field + "</th>";
+                titleTr += "<th style='white-space:nowrap;'>" + dum.title + "</th>";
+            }
+            fieldTr += "</tr>";
+            titleTr += "</tr>";
+            tab.find("thead").append(fieldTr).append(titleTr);
+        }
+        let getNewTr = function () {
+            let tr = $(document.createElement("tr"));
+            tr.addClass("str");
+            tr.attr("data-id", "tr" + (di++));
+            return tr;
+        }
+        let addNormalLine = function (lineData) {
+            let tbody = tab.find("tbody");
+            let tr = getNewTr();
+            for (const item of tableModule) {
+                let val = null;
+                if (lineData[item.field]) val = lineData[item.field];
+                let td = $(document.createElement("td"));
+                item.domConstructor(item, val).appendTo(td);
+                td.appendTo(tr);
+            }
+            tr.appendTo(tbody);
+            hideColByType();
+            return tr;
+        }
+        let addSpecialLine = function (lineData, type) {
+            let tbody = tab.find("tbody");
+            let tr = getNewTr();
+            tr.attr("sp-type", type);
+            for (const item of tableModule) {
+                let td = $(document.createElement("td"));
+                if (lineData[item.field]) {
+                    item.domConstructor(item, lineData[item.field][0], lineData[item.field][1]).appendTo(td);
+                } else if (item.must) {
+                    item.domConstructor(item).appendTo(td);
+                }
+                td.appendTo(tr);
+            }
+            tr.appendTo(tbody);
+            hideColByType();
+        }
+
+        let pxDispatcher = function () {
+            let type = $("input[name='showType']:checked").val();
+            tab.find("tbody tr").show();
+            let mapper = {
+                base: {name: ["listpxh"]},
+                list: {name: ["listpxh"], hide: ["fgf"]},
+                search: {name: ["searchpxh"], hide: ["fgf", "czl"]},
+                export: {name: ["exportpxh"], hide: ["fgf", "czl"]},
+                edit: {name: ["editrownum", "editnum"], hide: ["czl"]}
+            }
+            pxByType(mapper[type]);
+        }
+
+        let pxByType = function (obj) {
+            let data = [];
+            if (obj.hide) {
+                for (const item of obj.hide) {
+                    tab.find("tbody tr[sp-type='" + item + "']").hide();
+                }
+            }
+            let name = obj.name;
+            $("input[name='" + name[0] + "']").each(function () {
+                let $this = $(this);
+                let pxh = $this.val();
+                pxh = pxh.trim() == "" ? 0 : pxh;
+                let pxhArray = [pxh];
+                let parent = $this.parents("tr");
+                for (let i = 1; i < name.length; i++) {
+                    const n = name[i];
+                    let pxh = parent.find("input[name='" + n + "']").val();
+                    pxhArray.push(pxh);
+                }
+                data.push({pxh: pxhArray, id: $this.parents("tr").attr("data-id")});
+            });
+            data.sort(function (item1, item2) {
+                let pxhArr1 = item1.pxh;
+                let pxhArr2 = item2.pxh;
+                let list = pxhArr1.length >= pxhArr2.length ? pxhArr1 : pxhArr2;
+                let other = pxhArr1.length < pxhArr2.length ? pxhArr1 : pxhArr2;
+                for (let i = 0; i < list.length; i++) {
+                    const it = list[i];
+                    let ot = other[i] || 0;
+                    if (it - ot != 0) return it - ot;
+                }
+                return 0;
+            });
+            let idArray = [];
+            data.forEach(function (item, index) {
+                idArray.push(item.id);
+            });
+            sortable.sort(idArray);
+
+        }
+        let addCzlLine = function (data) {
+            let czlData = {
+                stbh: [stbh, true],
+                stxbh: ["_czl", true],
+                dbname: ["操作列", true],
+                islist: ["Y", true],
+                listhide: ["N", true],
+                listpxh: ["0", true],
+                listfixed: ["right", true],
+                listtitle:["操作列",true]
+            }
+            if (data) {
+                for (const cd in czlData) {
+                    if (data[cd]) {
+                        czlData[cd][0] = data[cd];
+                    }
+                }
+            }
+            let isExist = false;
+            $("input[name='stxbh']").each(function () {
+                if (this.value == "_czl")
+                    isExist = true;
+            })
+            if (isExist) {
+                alert("操作列已存在");
+                return false;
+            }
+            addSpecialLine(czlData, "czl");
+        }
+        $("#addCzlLine").click(function () {
+            addCzlLine();
+        });
+        $("#addNormalLine").click(addNormalLine);
+        $("#delXzLine").click(function () {
+            $("input[xzl]:checked").each(function () {
+                $(this).parents("tr").remove();
+            });
+        });
+        $("#qx").click(function () {
+            if ($("input[xzl]:checked").length > 0) {
+                $("input[xzl]").prop("checked", false);
+            } else {
+                $("input[xzl]").prop("checked", true);
+            }
+
+        });
+        let hideColByType = function () {
+            let type = $("input[name='showType']:checked").val();
+            tab.find("td,th").show();
+            if (type == "base") {
+                return true;
+            }
+            for (let i = 0; i < tableModule.length; i++) {
+                const item = tableModule[i];
+                if (item.type && (item.type != "base" && item.type != type)) {
+                    tab.find("tr").each(function () {
+                        $(this).find("th,td").eq(i).hide();
+                    });
+                }
+            }
+
+        }
+        $("input[name='showType']").click(function () {
+            hideColByType();
+            pxDispatcher();
+        });
+
+        let addFgfLine = function (data) {
+            let $this = $("#addFgfLine");
+            let index = parseInt($this.data("index"));
+            if (!index) index = 1;
+            else index++;
+            $this.data("index", index);
+            let fgfData = {
+                stbh: [stbh, true],
+                stxbh: ["_fgf" + index, true],
+                dbname: ["", false],
+                isedit: ["Y", true],
+                viewfield: ["N", false],
+                editrownum: ["0", true],
+                eidtwidth: ["12", false],
+                edittype: ["fgf", true]
+            }
+
+            if (data) {
+                for (const cd in fgfData) {
+                    if (data[cd]) {
+                        fgfData[cd][0] = data[cd];
+                    }
+                }
+            }
+
+            addSpecialLine(fgfData, "fgf");
+        }
+
+        $("#addFgfLine").click(function () {
+            addFgfLine();
+        });
+        $("#loadFromDb").click(function () {
+            let tab = $("#tableName").val();
+            if (tab.trim() == "") return false;
+            $.ajax({
+                url: "/system/modulesetting/queryTableColumn",
+                data: {tableName: tab},
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    if (!res.data || res.data.length == 0) return false;
+                    for (const datum of res.data) {
+                        let lineData = {};
+                        lineData.dblybm = datum["table_name"].toLowerCase();
+                        lineData.dblylm = datum["column_name"].toLowerCase();
+                        lineData.stxbh = lineData.dblylm;
+                        lineData.dbname = datum.comments;
+                        lineData.listtitle = lineData.dbname;
+                        lineData.edittitle = lineData.dbname;
+                        lineData.searchtitle = lineData.dbname;
+                        lineData.exporttitle = lineData.dbname;
+                        lineData.searchlb = "=";
+                        lineData.isexport = "Y";
+                        lineData.issearch = "Y";
+                        lineData.islist = "Y";
+                        lineData.isedit = "Y";
+                        lineData.listhide = "Y";
+                        lineData.listtype = "normal";
+                        lineData.listwhdth = "10%";
+
+                        let tr = addNormalLine(lineData);
+                        tr.tooltip({
+                            title: datum.comments,
+                            placement: "top"
+                        }).tooltip('show');
+
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseText);
+                }
+            });
+        });
+        $("#sub").click(function () {
+            let data = [];
+            tab.find("tbody").find("tr").each(function () {
+                let $1 = $(this);
+                let da = {};
+                $1.find(":input").each(function () {
+                    let $this = $(this);
+                    let verify = $this.attr("verify");
+                    let val = $this.val();
+                    let name = $this.attr("name");
+                    if (verify && verify == "required") {
+                        if (val == '') {
+                            alert(name + "不能为空");
+                            throw name + "不能为空";
+                        }
+                    }
+                    name && (da[name] = val);
+                });
+                data.push(da);
+            });
+            console.log(data);
+            let jsonData = JSON.stringify(data);
+            console.log(jsonData);
+            $.ajax({
+                url: "/system/modulesetting/batchUpdateAppEntityItem",
+                data: jsonData,
+                contentType: 'application/json;charset=utf-8',
+                type: "POST",
+                dataType: "JSON",
+                success: function (res) {
+                    console.log(res);
+                    if(res.success){
+                        alert(res.data);
+                    }else{
+                        alert(res.msg);
+                    }
+                }
+            })
+        });
+        let dataInit = function () {
+            $.ajax({
+                url: "/system/modulesetting/queryAppEntityItemByStbh",
+                type: "post",
+                dataType: "json",
+                data: {stbh: stbh},
+                success: function (res) {
+                    if (res.success) {
+                        let data = res.data;
+                        for (const datum of data) {
+                            if (datum.stxbh == "_czl") {
+                                addCzlLine(datum);
+                            } else if (datum.edittype == "fgf") {
+                                addFgfLine(datum);
+                            } else {
+                                addNormalLine(datum);
+                            }
+                        }
+                    }
+                }
+            })
+        }
+        dataInit();
+        createTitleCol();
+        tab.find("tbody").on("focus", "input[name='dbname']", function () {
+            let sync = ["listtitle", "searchtitle", "searchtitle", "edittitle", "exporttitle"];
+            let $this = $(this);
+            let val = $this.val();
+            let syncDom = [];
+            let tr = $this.parents("tr");
+            for (const it of sync) {
+                let targetDom = tr.find("input[name='" + it + "']");
+                let targetVal = targetDom.val();
+                if (val == targetVal) {
+                    syncDom.push(targetDom);
+                }
+            }
+            if (syncDom.length > 0) {
+                $this.on("input", function () {
+                    for (const sd of syncDom) {
+                        sd.val(this.value);
+                    }
+                });
+            }
+
+        });
+        tab.find("tbody").on("blur", "input[name='dbname']", function () {
+            $(this).off("input");
+        });
+
+        $("#autorownum").click(function(){
+
+        }).popover({
+            title: "只计算 <span style='color: red'>isedit 是否编辑项</span> 为 ‘是’/‘Y’ 的行。<h4>功能构思中</h4><h3 style='color: orangered'>敬请期待😊</h3>",
+            placement: "bottom",
+            trigger: "hover",
+            html:true
+        });
+    }
+    createTable();
+</script>
+</body>
+</html>

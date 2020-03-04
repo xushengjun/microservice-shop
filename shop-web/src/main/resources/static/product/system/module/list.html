@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Sortable.min.js"></script>
+</head>
+<body>
+<div id="example1" class="list-group col">
+    <div class="list-group-item" style="" draggable="false">Item 3</div>
+    <div class="list-group-item" style="" draggable="false">Item 1</div><div class="list-group-item" style="">Item 2</div>
+
+    <div class="list-group-item" draggable="false" style="">Item 6</div><div class="list-group-item" style="">Item 4</div>
+    <div class="list-group-item" style="">Item 5</div>
+</div>
+<script>
+    new Sortable(document.getElementById("example1"), {
+        animation: 150,
+        draggable: '.list-group-item',
+        ghostClass: 'blue-background-class',
+        // 列表内元素顺序更新的时候触发
+        onUpdate: function (/**Event*/evt) {
+            alert(evt.newIndex);
+            // same properties as onEnd
+        },
+    });
+</script>
+</body>
+</html>

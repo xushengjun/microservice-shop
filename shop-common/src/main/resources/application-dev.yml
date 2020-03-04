@@ -1,0 +1,7 @@
+# dev environment
+spring:
+  profiles: dev
+server:
+  port: 9100
+
+    

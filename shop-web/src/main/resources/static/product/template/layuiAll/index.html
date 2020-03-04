@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>查看</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <script src="/static/product/common/alljs/common.js"></script>
+    <link href="/static/product/common/allcss/rewrite.css">
+</head>
+<body>
+<div class="layui-container">
+    <div class="layui-col-xs12 layui-form">
+        <div class="layui-col-xs12">
+            <fieldset class="layui-elem-field">
+                <legend>字段集区块</legend>
+                <div class="layui-field-box">
+                    <div class="layui-col-xs3">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">星期</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" value="3" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="layui-col-xs12 block">
+            <blockquote class="layui-elem-quote">个人基本情况</blockquote>
+        </div>
+
+        <div class="layui-col-xs12 block">
+            <hr  class="layui-bg-green">
+            <p><span></span><b>个人基本情况</b><span></span></p>
+        </div>
+
+        <!--  input框  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">input框</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" name="" id="" lay-filter="" type="" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12"></div>
+
+
+        <!--  下拉框  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">下拉框</label>
+                <div class="layui-input-inline">
+                    <select name="" id="" lay-filter="" lay-verify="required">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12"></div>
+
+
+        <!--  多选  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">多选</label>
+                <div class="layui-input-inline" lang="checkbox">
+                    <input type="checkbox" name="like[write]" title="写作">
+                    <input type="checkbox" name="like[read]" title="阅读" checked>
+                    <input type="checkbox" name="like[dai]" title="发呆">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12"></div>
+
+
+        <!--  单选  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单选</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="sex" value="男" title="男">
+                    <input type="radio" name="sex" value="女" title="女" checked>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12"></div>
+
+
+
+
+        <!--  时间  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-inline">
+                    <input  class="layui-input" type="text" name="" time value="">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12"></div>
+
+
+
+        <!--  富文本  -->
+        <div class="layui-col-xs12">
+            <div class="layui-form-item">
+                <label class="layui-form-label">富文本</label>
+                <div class="layui-input-inline">
+                    <textarea class="layui-textarea" id="fwb" style="display: none"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--  附件  -->
+        <div class="layui-col-xs4">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="tips">*</span>附件</label>
+                <div class="layui-input-inline">
+                    <button class="layui-btn layui-btn-sm" id="uploadBtn">上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="index.js"></script>
+<script>
+    layui.config({
+        base : basePath, //静态资源所在路径
+        version: new Date().getTime()
+    }).extend({
+        index : indexPath //主入口模块
+    }).use(['index','jquery','baseUtil','layer','form','laydate','layedit'],index);
+</script>
+</body>
+</html>

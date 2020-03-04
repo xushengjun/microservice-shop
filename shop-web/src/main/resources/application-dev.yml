@@ -1,0 +1,14 @@
+# dev environment
+server:
+  port: 9400
+
+spring:
+  profiles: dev
+
+  application:
+    name: shop-web
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka

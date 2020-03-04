@@ -1,0 +1,9 @@
+# dev environment
+spring:
+  profiles: dev
+  application:
+    name: shop-seckill
+server:
+  port: 9200
+
+    

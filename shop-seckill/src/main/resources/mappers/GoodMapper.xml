@@ -3,9 +3,9 @@
 <mapper namespace="com.zhaoqin.shopseckill.mapper.GoodMapper">
 
     <!-- 获取所有的商品-->
-    <select id="getGoodList" resultType="com.zhaoqin.shopcommon.entity.Goods">
-        select
-            id id,
+    <select id="getGoodList" resultType="com.zhaoqin.shopcommon.bo.GoodsBo">
+      select
+            goods.id id,
             goods_name goodsName,
             goods_title goodsTitle,
             goods_img goodsImg,
@@ -13,8 +13,14 @@
             goods_price goodsPrice,
             goods_stock goodsStock,
             create_date createDate,
-            update_date updateDate
-        from goods
+            update_date updateDate,
+		    seckill_goods.seckil_price seckillPrice,
+		    stock_count stockCount
+
+
+        from goods left join seckill_goods
+        on goods.id = seckill_goods.goods_id
+
     </select>
 
 

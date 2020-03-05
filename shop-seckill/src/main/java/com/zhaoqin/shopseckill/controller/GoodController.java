@@ -1,6 +1,7 @@
 package com.zhaoqin.shopseckill.controller;
 
 import com.sun.corba.se.impl.encoding.CDROutputObject;
+import com.zhaoqin.shopcommon.bo.GoodsBo;
 import com.zhaoqin.shopcommon.entity.Goods;
 import com.zhaoqin.shopcommon.util.ResultData;
 import com.zhaoqin.shopseckill.service.GoodService;
@@ -23,10 +24,9 @@ public class GoodController {
     private GoodService service;
 
     @GetMapping("goods")
-    public ResultData getGoodList(){
-        List<Goods> goodList = service.getGoodList();
+    public ResultData getGoodList() {
+        List<GoodsBo> goodList = service.getGoodList();
         return ResultData.ok(goodList, "查询成功");
     }
-
 
 }

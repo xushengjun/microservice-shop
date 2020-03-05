@@ -23,22 +23,24 @@
             <span><span id="username"></span></span>
             <span id="address">没有收货地址的提示。。。</span>
         </div>
+        <form>
 
         <div class="seckill_goods" id="goodList">
             <h4 id="goodname"></h4>
-            <img th:src="@{${goods.goodsImg}}" width="250"/>
+            <img id="img" src="" width="250"/>
             <br/><br/>
             <div class="seckill_price">
-                <p id="goodtitle"></p>
+                <span id="goodtitle"></span>
                 <p>
-                    <span class="price1" id="seckillprice"></span>
-                    <del><span class="price2" id="goodprice"></span></del>
+                    秒杀价格:<span class="price1" id="seckillprice"></span>
+                    原本价格:<del><span class="price2" id="goodprice"></span></del>
+                    仅剩数量:<span class="price1" id="stock_count"></span>
                 </p>
-                <a th:href="'/goods_detail.html?goodsId='+${goods.id}">
-                    <a class="btn btn-default" type="submit">进入详情页...</a>
-                </a>
+                <br/>
+                    <a class="btn btn-default" type="submit" id = "dump">立即秒杀</a>
             </div>
         </div>
+        </form>
     </div>
 
 </div>

@@ -1,5 +1,6 @@
 package com.zhaoqin.shopseckill.service.imp;
 
+import com.zhaoqin.shopcommon.bo.GoodsBo;
 import com.zhaoqin.shopcommon.entity.Goods;
 import com.zhaoqin.shopseckill.mapper.GoodMapper;
 import com.zhaoqin.shopseckill.service.GoodService;
@@ -19,7 +20,7 @@ public class GoodServiceImp implements GoodService {
     private GoodMapper mapper;
 
     @Override
-    public List<Goods> getGoodList() {
+    public List<GoodsBo> getGoodList() {
         return mapper.getGoodList();
     }
 }

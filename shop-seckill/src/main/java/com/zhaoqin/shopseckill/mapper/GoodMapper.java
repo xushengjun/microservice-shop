@@ -1,6 +1,6 @@
 package com.zhaoqin.shopseckill.mapper;
 
-import com.zhaoqin.shopcommon.entity.Goods;
+import com.zhaoqin.shopcommon.bo.GoodsBo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,5 +17,5 @@ public interface GoodMapper {
      * 获取所有商品
      * @return
      */
-    List<Goods> getGoodList();
+    List<GoodsBo> getGoodList();
 }

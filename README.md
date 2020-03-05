@@ -1,5 +1,5 @@
 # microservice-shop
-##主要使用springCloud微服务架构
+## 主要使用springCloud微服务架构
 ## shop-common:存放公共实体类和工具类
 ## shop-eureka:服务注册中心
 ## shop-zuul:配置每个微服务的路由网关

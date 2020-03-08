@@ -19,15 +19,7 @@ spring:
     url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
-    hikari:
-      minimum-idle: 0
-      maximum-pool-size: 3
-      auto-commit: false
-      idle-timeout: 50000
-      pool-name: DatebookHikariCP
-      max-lifetime: 90000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1 from dual
+
 
 # 指定sql映射文件位置
 mybatis:

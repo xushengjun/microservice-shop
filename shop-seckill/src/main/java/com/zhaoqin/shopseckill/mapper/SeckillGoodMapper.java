@@ -2,6 +2,7 @@ package com.zhaoqin.shopseckill.mapper;
 
 import com.zhaoqin.shopcommon.bo.GoodsBo;
 import com.zhaoqin.shopcommon.entity.Goods;
+import com.zhaoqin.shopcommon.entity.SeckillGoods;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,18 +13,12 @@ import java.util.List;
  * @Date 2020/3/4
  */
 @Mapper
-public interface GoodMapper {
-
-    /**
-     * 获取所有商品
-     * @return
-     */
-    List<GoodsBo> getGoodList();
+public interface SeckillGoodMapper {
 
     /**
      * 获取
-     * @param goodId
+     * @param seckillGoodId
      * @return
      */
-    Goods getGood(String goodId);
+    SeckillGoods getSeckillGood(String seckillGoodId);
 }

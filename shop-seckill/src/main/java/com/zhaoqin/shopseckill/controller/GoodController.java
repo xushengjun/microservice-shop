@@ -7,6 +7,7 @@ import com.zhaoqin.shopcommon.util.ResultData;
 import com.zhaoqin.shopseckill.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +30,11 @@ public class GoodController {
         return ResultData.ok(goodList, "查询成功");
     }
 
+    @GetMapping("good/{id}")
+    public ResultData getGood(
+            @PathVariable("id") String goodId
+    ){
+        Goods good = service.getGood(goodId);
+        return ResultData.ok(good, "查询成功");
+    }
 }

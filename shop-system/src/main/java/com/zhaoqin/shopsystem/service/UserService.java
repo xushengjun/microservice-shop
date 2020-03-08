@@ -1,6 +1,8 @@
 package com.zhaoqin.shopsystem.service;
 
 import com.zhaoqin.shopcommon.entity.User;
+import com.zhaoqin.shopsystem.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,5 +12,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface UserService {
+
     User isExist(String username, String password);
 }

@@ -27,6 +27,20 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1 from dual
 
+  redis:
+    database: 0
+    host: 62.234.86.114
+    port: 6379
+    password: "^ZHAOQIN^&18040027158ZHAOQIN"
+    timeout: 6000ms
+    lettuce:
+      pool:
+        max-active: 1
+        max-wait: -1ms
+        max-idle: 1
+        min-idle: 0
+        time-between-eviction-runs: 60000ms
+
 # 指定sql映射文件位置
 mybatis:
   mapper-locations: classpath:mappers/*.xml

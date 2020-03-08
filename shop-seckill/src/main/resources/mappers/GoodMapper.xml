@@ -23,5 +23,30 @@
 
     </select>
 
+    <select id="getGood" parameterType="String" resultType="com.zhaoqin.shopcommon.entity.Goods">
+        select
+             goods.id id,
+            goods_name goodsName,
+            goods_title goodsTitle,
+            goods_img goodsImg,
+            goods_detail goodsDetail,
+            goods_price goodsPrice,
+            goods_stock goodsStock,
+            create_date createDate,
+            update_date updateDate
+        from goods
+        <where>
+            <choose>
+                <when test="goodId != null and goodId != ''">
+                    id = #{goodId}
+                </when>
+                <otherwise>
+                    1 = 0
+                </otherwise>
+            </choose>
+        </where>
+
+    </select>
+
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.zhaoqin.shopseckill.service;
 
 import com.zhaoqin.shopcommon.bo.GoodsBo;
+import com.zhaoqin.shopcommon.entity.Goods;
 
 import java.util.List;
 
@@ -16,4 +17,10 @@ public interface GoodService {
      * @return
      */
     List<GoodsBo> getGoodList();
+
+    /**
+     *查询商品信息
+     * @param goodId
+     */
+    Goods getGood(String goodId);
 }

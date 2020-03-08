@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaoqin.shopseckill.mapper.SeckillOrderMapper">
+
+    <!-- 获取所有的商品-->
+    <select id="getSeckillOrderByUserIdGoodId" parameterType="String" resultType="com.zhaoqin.shopcommon.entity.SeckillOrder">
+      select * from seckill_order
+      <where>
+        <choose>
+            <when test="userId != null and userId != '' and goodId != null and goodId != ''">
+                user_id = #{userId} and good_id = #{goodId}
+            </when>
+            <otherwise>
+                1 = 0
+            </otherwise>
+        </choose>
+      </where>
+    </select>
+
+
+</mapper>

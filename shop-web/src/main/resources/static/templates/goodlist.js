@@ -1,6 +1,7 @@
-var form = layui.form;
+var form;
 
 function goodlist() {
+    form = layui.form;
     //查询所有商品
     getGoodList();
     dump();
@@ -13,7 +14,7 @@ function getGoodList() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "/seckill/good/goods", //(必需)
+        url: "/seckill/good/goods",
         data: {}, // 参数
         dataType: "json",
         success: function(result) {
@@ -41,7 +42,7 @@ function renderDiv(result) {
 
 
 function dump() {
-    form.on('submit(dump)',function () {
+    form.on('submit(dump)',function (data) {
         debugger
 
     });

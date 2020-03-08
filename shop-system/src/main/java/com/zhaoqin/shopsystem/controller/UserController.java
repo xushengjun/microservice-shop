@@ -1,9 +1,14 @@
 package com.zhaoqin.shopsystem.controller;
 
+import com.zhaoqin.shopcommon.constant.BaseConstant;
+import com.zhaoqin.shopcommon.constant.RedisConstant;
 import com.zhaoqin.shopcommon.entity.User;
+import com.zhaoqin.shopcommon.util.CommonUtils;
 import com.zhaoqin.shopcommon.util.ResultData;
 import com.zhaoqin.shopsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +19,15 @@ import javax.servlet.http.HttpSession;
  * @Author zhaoqin
  * @Date 2020/3/4
  */
-@Controller
 @RestController
 public class UserController {
     @Autowired
     private UserService service;
+    @Autowired
+    private ValueOperations<String, String> valueOperations;
+    @Autowired
+    private HashOperations<String, String, User> hashOperations;
+
 
     /**
      * 登录
@@ -32,14 +41,27 @@ public class UserController {
             @RequestParam("password") String password,
             HttpSession session
     ){
+        //判断用户
         User user = service.isExist(username, password);
         if(user == null)
             return ResultData.error("登录密码错误");
 
         //用户信息存入redis
+        if(!hashOperations.hasKey(RedisConstant.userKey, ""+user.getId()))
+            hashOperations.put(RedisConstant.userKey, "" + user.getId(), user);
 
         //用户信息存入session
-        session.setAttribute("" + user.getId(), user);
+        if(session.getAttribute(session.getId() + user.getId()) == null)
+            session.setAttribute(session.getId() + user.getId(), user);
+
+        //用户ID存入redis
+        if(CommonUtils.isEmpty(valueOperations.get(BaseConstant.USER_ID)))
+            valueOperations.set(BaseConstant.USER_ID, "" + user.getId());
+
+        //用户ID存入Session
+        if(CommonUtils.isEmpty((String) session.getAttribute(BaseConstant.USER_ID)))
+            session.setAttribute(BaseConstant.USER_ID, ""+user.getId());
+
         return ResultData.ok();
     }
 

@@ -55,6 +55,7 @@ public class SeckillController {
 
         // 5 将userId 和 goodId封装成消息,入rabbitMq队列
 
+
         return null;
     }
 }

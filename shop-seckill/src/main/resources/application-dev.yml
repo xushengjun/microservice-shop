@@ -41,6 +41,12 @@ spring:
         min-idle: 0
         time-between-eviction-runs: 60000ms
 
+  rabbitmq:
+    host: 62.234.86.114
+    port: 5672
+    username: guest
+    password: guest
+
 # 指定sql映射文件位置
 mybatis:
   mapper-locations: classpath:mappers/*.xml

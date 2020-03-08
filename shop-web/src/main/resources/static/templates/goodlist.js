@@ -37,6 +37,8 @@ function renderDiv(result) {
     $("#seckillprice").text(good.seckillPrice);
     $("#goodprice").text(good.goodsPrice);
     $("#stock_count").text(good.stockCount);
+    $("#goodId").val(good.id);
+
 
 }
 
@@ -44,6 +46,18 @@ function renderDiv(result) {
 function dump() {
     form.on('submit(dump)',function (data) {
         debugger
-
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: "/seckill/good/goods",
+            data: {}, // 参数
+            dataType: "json",
+            success: function(result) {
+                renderDiv(result);
+            },
+            error: function() {
+                debugger
+            }
+        });
     });
 }

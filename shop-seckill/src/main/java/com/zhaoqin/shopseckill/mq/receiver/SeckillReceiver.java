@@ -39,16 +39,17 @@ public class SeckillReceiver {
         if(stockCount <= 0) {
             return;
         }
+
         //判断是否已经秒杀到了
-//        SeckillOrder seckillOrder = seckillOrderService.getSeckillOrderByUserIdGoodId(message.getUserId(), message.getGoodsId());
-//        if(seckillOrder != null) {
-//            return;
-//        }
-        // 秒杀商品库存减一
+        SeckillOrder seckillOrder = seckillOrderService.getSeckillOrderByUserIdGoodId(message.getUser().getId(), message.getGoodsId());
+        if(seckillOrder != null) {
+            return;
+        }
 
-        // 存订单信息  存秒杀订单信息
+        // 减库存 下订单 存秒杀记录
+        // 减库存失败 说明秒杀商品没有 结束秒杀标记(redis)
+//        seckillOrderService.makeOrder();
 
-        // 如果库存减一失败 结束秒杀标记
     }
 
 }

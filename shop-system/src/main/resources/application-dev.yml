@@ -20,6 +20,15 @@ spring:
     username: root
     password: 123456
 
+  rabbitmq:
+    host: 62.234.86.114
+    port: 5672
+    username: guest
+    password: guest
+
+  session:
+    store-type: redis
+
 
 # 指定sql映射文件位置
 mybatis:

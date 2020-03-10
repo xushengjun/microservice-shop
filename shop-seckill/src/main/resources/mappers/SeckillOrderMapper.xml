@@ -3,7 +3,7 @@
 <mapper namespace="com.zhaoqin.shopseckill.mapper.SeckillOrderMapper">
 
     <!-- 获取所有的商品-->
-    <select id="getSeckillOrderByUserIdGoodId" parameterType="String" resultType="com.zhaoqin.shopcommon.entity.SeckillOrder">
+    <select id="getSeckillOrderByUserIdGoodId" parameterType="long" resultType="com.zhaoqin.shopcommon.entity.SeckillOrder">
       select * from seckill_order
       <where>
         <choose>

@@ -22,7 +22,7 @@ public class SeckillOrderServiceImp implements SeckillOrderService {
      * @param userId
      * @param goodId
      */
-    public SeckillOrder getSeckillOrderByUserIdGoodId(String userId, String goodId){
+    public SeckillOrder getSeckillOrderByUserIdGoodId(long userId, long goodId){
         return mapper.getSeckillOrderByUserIdGoodId(userId, goodId);
     }
 }

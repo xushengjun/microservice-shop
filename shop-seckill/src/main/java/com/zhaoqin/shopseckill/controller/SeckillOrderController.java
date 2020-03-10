@@ -23,7 +23,7 @@ public class SeckillOrderController {
 
     @GetMapping("{id}")
     public ResultData getGood(
-            @PathVariable("id") String seckillGoodId
+            @PathVariable("id") Long seckillGoodId
     ){
         SeckillGoods seckillGood = service.getSeckillGood(seckillGoodId);
         return ResultData.ok(seckillGood, "查询成功");

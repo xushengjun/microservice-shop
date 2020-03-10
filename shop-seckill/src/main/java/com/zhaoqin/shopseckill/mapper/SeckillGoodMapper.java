@@ -20,5 +20,5 @@ public interface SeckillGoodMapper {
      * @param seckillGoodId
      * @return
      */
-    SeckillGoods getSeckillGood(String seckillGoodId);
+    SeckillGoods getSeckillGood(long seckillGoodId);
 }

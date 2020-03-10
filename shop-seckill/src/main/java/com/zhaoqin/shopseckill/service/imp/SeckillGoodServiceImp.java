@@ -21,7 +21,7 @@ public class SeckillGoodServiceImp {
     @Autowired
     private SeckillGoodMapper mapper;
 
-    public SeckillGoods getSeckillGood(String seckillGoodId) {
+    public SeckillGoods getSeckillGood(long seckillGoodId) {
         return mapper.getSeckillGood(seckillGoodId);
     }
 }

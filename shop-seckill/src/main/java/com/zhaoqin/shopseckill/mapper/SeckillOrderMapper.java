@@ -11,5 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SeckillOrderMapper  {
 
-    SeckillOrder getSeckillOrderByUserIdGoodId(String userId, String goodId);
+    SeckillOrder getSeckillOrderByUserIdGoodId(long userId, long goodId);
 }

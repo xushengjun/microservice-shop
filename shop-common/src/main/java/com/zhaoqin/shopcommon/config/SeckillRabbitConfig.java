@@ -16,7 +16,7 @@ public class SeckillRabbitConfig {
     public static final String MIAOSHA_QUEUE = "miaosha_queue";
 
     @Bean
-    public Queue queue() {
+    public Queue miaosha_queue() {
         return new Queue(MIAOSHA_QUEUE);
     }
 }

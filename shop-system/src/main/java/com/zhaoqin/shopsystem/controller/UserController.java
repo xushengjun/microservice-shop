@@ -47,8 +47,8 @@ public class UserController {
             return ResultData.error("登录密码错误");
 
         //用户信息存入redis
-        if(!hashOperations.hasKey(RedisConstant.userKey, ""+user.getId()))
-            hashOperations.put(RedisConstant.userKey, "" + user.getId(), user);
+        if(!hashOperations.hasKey(RedisConstant.userKey, String.valueOf(user.getId())))
+            hashOperations.put(RedisConstant.userKey, String.valueOf(user.getId()), user);
 
         //用户信息存入session
         if(session.getAttribute(session.getId() + user.getId()) == null)
@@ -56,11 +56,11 @@ public class UserController {
 
         //用户ID存入redis
         if(CommonUtils.isEmpty(valueOperations.get(BaseConstant.USER_ID)))
-            valueOperations.set(BaseConstant.USER_ID, "" + user.getId());
+            valueOperations.set(BaseConstant.USER_ID, String.valueOf(user.getId()));
 
         //用户ID存入Session
-        if(CommonUtils.isEmpty((String) session.getAttribute(BaseConstant.USER_ID)))
-            session.setAttribute(BaseConstant.USER_ID, ""+user.getId());
+        if(session.getAttribute(BaseConstant.USER_ID) == null)
+            session.setAttribute(BaseConstant.USER_ID, user.getId());
 
         return ResultData.ok();
     }

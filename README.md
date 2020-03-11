@@ -15,3 +15,6 @@
 * 订阅模型-Fanout：广播模式，将消息交给所有绑定到交换机的队列，每个消费者都会收到同一条消息
 * 订阅模型-Direct：定向，把消息交给符合指定 rotingKey 的队列
 * 订阅模型-Topic 主题模式：通配符，把消息交给符合routing pattern（路由模式） 的队列
+## 微服务之间redis开启session共享
+* 引入spring-session-data-redis启动器 并在启动类上加上@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)
+

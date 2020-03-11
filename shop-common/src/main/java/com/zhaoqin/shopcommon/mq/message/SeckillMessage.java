@@ -12,6 +12,12 @@ public class SeckillMessage {
     private long goodsId;//秒杀商品id
     private String seckillDate;//秒杀时间
 
+    //一定要加
+    //原因是我在该实体类中添加了一个为了方便实例化该类用的构造函数，导致JVM不会添加默认的无参构造函数，而jackson的反序列化需要无参构造函数，因此报错。
+    public SeckillMessage(){
+
+    }
+
     public SeckillMessage(User user, long goodsId) {
         this.user = user;
         this.goodsId = goodsId;

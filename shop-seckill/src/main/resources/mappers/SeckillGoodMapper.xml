@@ -5,7 +5,7 @@
     <select id="getSeckillGood" parameterType="long" resultType="com.zhaoqin.shopcommon.entity.SeckillGoods">
         select
               id id,
-              good_id goodsId,
+              goods_id goodsId,
               seckil_price seckilPrice,
               stock_count stockCount,
               start_date startDate,
@@ -13,7 +13,7 @@
         from seckill_goods
         <where>
             <choose>
-                <when test="seckillGoodId != null and seckillGoodId != ''">
+                <when test="seckillGoodId != null ">
                     id = #{seckillGoodId}
                 </when>
                 <otherwise>

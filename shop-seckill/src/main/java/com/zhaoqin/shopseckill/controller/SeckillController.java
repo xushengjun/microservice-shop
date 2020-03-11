@@ -8,6 +8,7 @@ import com.zhaoqin.shopcommon.entity.User;
 import com.zhaoqin.shopcommon.mq.message.SeckillMessage;
 import com.zhaoqin.shopcommon.util.ResultData;
 import com.zhaoqin.shopseckill.mq.sender.SeckillSender;
+import com.zhaoqin.shopseckill.service.SeckillOrderService;
 import com.zhaoqin.shopseckill.service.imp.SeckillGoodServiceImp;
 import com.zhaoqin.shopseckill.service.imp.SeckillOrderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class SeckillController {
     @Autowired
     private HashOperations<String, String, User> hashOperations;
     @Autowired
-    private SeckillOrderServiceImp seckillOrderService;
+    private SeckillOrderService seckillOrderService;
     @Autowired
     private SeckillGoodServiceImp seckillGoodServiceImp;
     @Autowired

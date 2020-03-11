@@ -1,6 +1,8 @@
 package com.zhaoqin.shopcommon.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
   private long id;//用户id
   private String userName;//用户姓名

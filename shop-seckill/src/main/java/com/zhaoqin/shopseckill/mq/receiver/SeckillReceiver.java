@@ -48,7 +48,8 @@ public class SeckillReceiver {
 
         // 减库存 下订单 存秒杀记录
         // 减库存失败 说明秒杀商品没有 结束秒杀标记(redis)
-//        seckillOrderService.makeOrder();
+        seckillOrderService.makeOrder(message);
+
 
     }
 

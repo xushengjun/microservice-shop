@@ -15,7 +15,7 @@ public class CopySqlUtils {
 
     public static void main(String[] args) {
 
-        String[] codeList = new String[]{"xssqssglyy"};
+        String[] codeList = new String[]{"xsdaglyy"};
 
 //        String[] codeList = new String[]{
 //        "xhbhgz","xslbdm","xsztdm","xjydlbdm","zcxxnxgz","bjdm","sfxmdm","kcxzdm","cjdjdm",
@@ -64,23 +64,23 @@ public class CopySqlUtils {
                 //录入
 
                 +"insert into app_module_method(MKBM, CZBM, CZMC, CZLBBM, CZLBMC, ICONBM, ICONMC, CLAZZBM, CLAZZMC, PXH, BZ)"
-                +"values('"+mkbm+"', 'input', '录入', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
+                +"values('"+mkbm+"', 'input', '录入档案信息', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
 
                 +"insert into app_module_method_right(JSID, MKBM, CZBM)"
                 +"values('yy', '"+mkbm+"', 'input');"  +"\n"
                 //导入
                 +"insert into app_module_method(MKBM, CZBM, CZMC, CZLBBM, CZLBMC, ICONBM, ICONMC, CLAZZBM, CLAZZMC, PXH, BZ)"
-                +"values('"+mkbm+"', 'import', '导入', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
+                +"values('"+mkbm+"', 'import', '导入档案信息', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
 
                 +"insert into app_module_method_right(JSID, MKBM, CZBM)"
                 +"values('yy', '"+mkbm+"', 'import');"  +"\n"
 
                 //统计
-                +"insert into app_module_method(MKBM, CZBM, CZMC, CZLBBM, CZLBMC, ICONBM, ICONMC, CLAZZBM, CLAZZMC, PXH, BZ)"
-                +"values('"+mkbm+"', 'statistics', '统计', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
-
-                +"insert into app_module_method_right(JSID, MKBM, CZBM)"
-                +"values('yy', '"+mkbm+"', 'statistics');"  +"\n"
+//                +"insert into app_module_method(MKBM, CZBM, CZMC, CZLBBM, CZLBMC, ICONBM, ICONMC, CLAZZBM, CLAZZMC, PXH, BZ)"
+//                +"values('"+mkbm+"', 'statistics', '统计', 'bar', '工具条', null, null, null, null, 1, null);"  +"\n"
+//
+//                +"insert into app_module_method_right(JSID, MKBM, CZBM)"
+//                +"values('yy', '"+mkbm+"', 'statistics');"  +"\n"
 
 
 //                +"insert into app_module_method_right(JSID, MKBM, CZBM)"

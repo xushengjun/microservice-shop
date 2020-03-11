@@ -27,11 +27,24 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1 from dual
 
+#  redis:
+#    database: 0
+#    host: 62.234.86.114
+#    port: 6379
+#    password: "^ZHAOQIN^&18040027158ZHAOQIN"
+#    timeout: 6000ms
+#    lettuce:
+#      pool:
+#        max-active: 1
+#        max-wait: -1ms
+#        max-idle: 1
+#        min-idle: 0
+#        time-between-eviction-runs: 60000ms
   redis:
     database: 0
-    host: 62.234.86.114
+    host: 39.105.193.132
     port: 6379
-    password: "^ZHAOQIN^&18040027158ZHAOQIN"
+    password: "^&ASFHGGmnAASF2254=_"
     timeout: 6000ms
     lettuce:
       pool:

@@ -1,5 +1,7 @@
 package com.zhaoqin.shopseckill.mapper;
 
+import com.zhaoqin.shopcommon.entity.OrderInfo;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OrderMapper {
+
+    long insert(OrderInfo orderInfo);
+
 }

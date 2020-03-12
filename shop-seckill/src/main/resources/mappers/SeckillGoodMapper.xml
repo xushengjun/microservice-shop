@@ -24,5 +24,10 @@
 
     </select>
 
+    <!--获取所有的秒杀商品 -->
+    <select id="getSeckillGoodList" resultType="com.zhaoqin.shopcommon.entity.SeckillGoods">
+        select * from seckill_goods
+    </select>
+
 
 </mapper>

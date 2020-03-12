@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisConstant {
     public static final  String userKey = "user";
+    public static final  String seckillGoodKey = "seckillGood";
 }

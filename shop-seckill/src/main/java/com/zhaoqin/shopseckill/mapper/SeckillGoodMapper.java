@@ -21,4 +21,10 @@ public interface SeckillGoodMapper {
      * @return
      */
     SeckillGoods getSeckillGood(long seckillGoodId);
+
+    /**
+     * 获取所有的秒杀商品
+     * @return
+     */
+    List<SeckillGoods> getSeckillGoodList();
 }

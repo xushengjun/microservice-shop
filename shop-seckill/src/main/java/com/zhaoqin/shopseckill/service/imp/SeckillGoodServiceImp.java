@@ -21,7 +21,20 @@ public class SeckillGoodServiceImp {
     @Autowired
     private SeckillGoodMapper mapper;
 
+    /**
+     * 获取秒杀商品
+     * @param seckillGoodId
+     * @return
+     */
     public SeckillGoods getSeckillGood(long seckillGoodId) {
         return mapper.getSeckillGood(seckillGoodId);
+    }
+
+    /**
+     * 获取所有的秒杀商品
+     * @return
+     */
+    public List<SeckillGoods> getSeckillGoodList(){
+        return mapper.getSeckillGoodList();
     }
 }

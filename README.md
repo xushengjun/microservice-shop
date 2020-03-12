@@ -21,5 +21,5 @@
 * 更改redis.conf配置 因为redis部署在docker上,
 ## springboot 整合docker redis rabbitMq 我部署在了docker,然后编写dockerFile创建镜像,部署在docker容器上
 
-## 优化项目初始化时，将所有的秒杀商品的库存存进redis
+## 优化  项目初始化时，将所有的秒杀商品的库存存进redis
 

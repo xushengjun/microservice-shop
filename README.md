@@ -22,4 +22,4 @@
 ## springboot 整合docker redis rabbitMq 我部署在了docker,然后编写dockerFile创建镜像,部署在docker容器上
 
 ## 优化  项目初始化时，将所有的秒杀商品的库存存进redis
-
+* 创建一个类，实现ApplicationListener接口，并重写里面的onApplicationEvent方法,在这个方法里面写逻辑即可

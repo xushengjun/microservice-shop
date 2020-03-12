@@ -17,4 +17,10 @@
 * 订阅模型-Topic 主题模式：通配符，把消息交给符合routing pattern（路由模式） 的队列
 ## 微服务之间redis开启session共享
 * 引入spring-session-data-redis启动器 并在启动类上加上@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)
+## 解决@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)加上注解,开启微服务之间的session共享,redis报错问题
+* 更改redis.conf配置 因为redis部署在docker上,
+## springboot 整合docker redis rabbitMq 我部署在了docker,然后编写dockerFile创建镜像,部署在docker容器上
 
+## 优化  项目初始化时，将所有的秒杀商品的库存存进redis
+* 1 创建一个类，实现ApplicationListener接口，并重写里面的onApplicationEvent方法,在这个方法里面写逻辑即可
+* 2 在启动类中注册我们刚刚创建的初始化类

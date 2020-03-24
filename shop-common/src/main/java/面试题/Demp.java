@@ -13,3 +13,8 @@ public class Demp {
         System.out.println(map);
     }
 }
+
+//社保地址
+
+//北京市海淀区安宁庄东路8号社保所20窗口
+//62921106

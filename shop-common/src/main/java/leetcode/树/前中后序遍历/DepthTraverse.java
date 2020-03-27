@@ -1,6 +1,7 @@
 package leetcode.树.前中后序遍历;
 
-import 树.TreeNode;
+
+import leetcode.树.TreeNode;
 
 /**
  *

@@ -1,6 +1,6 @@
 package leetcode.树.层次遍历;
 
-import 树.TreeNode;
+import leetcode.树.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

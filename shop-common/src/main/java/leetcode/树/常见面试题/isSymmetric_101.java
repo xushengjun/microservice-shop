@@ -3,6 +3,8 @@ package leetcode.树.常见面试题;
 import leetcode.树.TreeNode;
 
 /**
+ * 101 对称二叉树
+ *
  * 判断一颗树是否镜像对称
  *
  *
@@ -20,7 +22,7 @@ import leetcode.树.TreeNode;
  *
  *
  */
-public class isSymmetric {
+public class isSymmetric_101 {
 
     public static void main(String[] args) {
         //创建一个镜像对称的树

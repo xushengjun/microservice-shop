@@ -1,8 +1,9 @@
-package leetcode.树;
+package leetcode.树.常见面试题;
 
-import org.omg.CORBA.MARSHAL;
 
-public class MaxDepth {
+import leetcode.树.TreeNode;
+
+public class MaxDepth_104 {
     public static void main(String[] args) {
         TreeNode<String> tree = new TreeNode<>();
         TreeNode left = tree.addLeft("2");
@@ -10,7 +11,7 @@ public class MaxDepth {
         left.addLeft("4");
         TreeNode root = tree;
 
-        MaxDepth maxDepth = new MaxDepth();
+        MaxDepth_104 maxDepth = new MaxDepth_104();
         System.out.println(maxDepth.getMaxDepth(root));
 
     }

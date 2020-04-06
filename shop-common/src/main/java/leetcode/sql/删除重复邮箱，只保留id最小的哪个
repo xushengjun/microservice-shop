@@ -1,0 +1,14 @@
+1 第一种思路
+    找到所有重复邮箱的最新id
+    select min(id) from P group by eamil having count(email) > 1
+    //删除不是最小id的所有邮箱 但是可能删除不重复的邮箱
+    所以  select min(id) from P group by eamil
+
+    delete from P where id not in (select min(id) from P group by eamil) as A
+
+
+    第二种思路
+
+    用两张Person表联合起来
+    delete p1 from
+    Person p1 left join Person p2 on p1.email = p2.email and p1.id > p2.id

@@ -7,7 +7,7 @@ import java.util.Arrays;
  *动态规划方程 dp[i][j]表示从左上角到该坐标的所有走法
  * dp[i][j] = dp[i-1][j] + d[i][j-1]
  */
-public class UniquePaths {
+public class UniquePaths_62 {
 
     public static void main(String[] args) {
         int i = uniquePaths(7, 3);

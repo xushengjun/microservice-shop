@@ -8,7 +8,7 @@ import java.util.Arrays;
  * dp[i][j] = Math.min(dp[i-1][j], d[i][j-1])
  *
  */
-public class MinimumPathSum {
+public class MinimumPathSum_64 {
     public static void main(String[] args) {
         int [][] array = new int[][]{
                 {1,3,1},

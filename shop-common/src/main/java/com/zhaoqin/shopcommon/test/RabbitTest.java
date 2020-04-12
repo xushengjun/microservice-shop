@@ -1,5 +1,9 @@
 package com.zhaoqin.shopcommon.test;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Objects;
+
 /**
  * @ClassName RabbitTest
  * @Author zhaoqin
@@ -8,6 +12,7 @@ package com.zhaoqin.shopcommon.test;
 public class RabbitTest {
 
     public static void main(String[] args) {
+        AnnotationConfigApplicationContext a = new AnnotationConfigApplicationContext();
 
 
     }
